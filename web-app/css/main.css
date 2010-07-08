@@ -269,6 +269,27 @@ th.desc a {
 	white-space: nowrap;
 }
 
+.dialog dl {
+	border: 1px solid #ccc;
+	padding: 5px 2px;
+}
+
+.dialog dl dt,
+.dialog dl dd {
+	padding: 5px 6px;	
+}
+
+.dialog dl dt {
+	clear: left;
+	float: left;
+	width: 12em; /* TODO: hmm */
+}
+
+.dialog dl dd {
+	margin-left: 12em;
+	min-height: 15px; /* TODO: hmm */
+}
+
 .prop {
 	padding: 5px;
 }

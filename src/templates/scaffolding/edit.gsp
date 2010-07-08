@@ -33,6 +33,7 @@
                 <g:hiddenField name="version" value="\${${propertyName}?.version}" />
                 <section class="dialog">
                     <fieldset>
+						<ul>
                         <%  excludedProps = Event.allEvents.toList() << 'version' << 'id' << 'dateCreated' << 'lastUpdated'
                             props = domainClass.properties.findAll { !excludedProps.contains(it.name) }
                             Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
@@ -44,15 +45,12 @@
 									display = (cp?.display ?: true)
 								}
                                 if (display) { %>
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="${p.name}"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></label>
-                                </td>
-                                <td valign="top" class="value \${hasErrors(bean: ${propertyName}, field: '${p.name}', 'errors')}">
-                                    ${renderEditor(p)}
-                                </td>
-                            </tr>
+							<li class="prop \${hasErrors(bean: ${propertyName}, field: '${p.name}', 'errors')}">
+								<label for="${p.name}"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></label>
+								${renderEditor(p)}
+							</li>
                         <%  }   } %>
+						</ul>
                     </fieldset>
 					<fieldset class="buttons">
 						<g:actionSubmit class="save" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
