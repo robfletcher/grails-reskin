@@ -41,7 +41,6 @@
                     <g:each in="\${${propertyName}List}" status="i" var="${propertyName}">
                         <tr class="\${(i % 2) == 0 ? 'odd' : 'even'}">
                         <%  props.eachWithIndex { p, i ->
-                                cp = domainClass.constrainedProperties[p.name]
                                 if (i == 0) { %>
                             <td><g:link action="show" id="\${${propertyName}.id}">\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</g:link></td>
                         <%      } else if (i < 6) {
