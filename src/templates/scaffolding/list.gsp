@@ -1,23 +1,27 @@
+<!DOCTYPE html>
 <% import grails.persistence.Event %>
 <%=packageName%>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <ul class="nav">
-            <li class="menuButton"><a class="home" href="\${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-            <li class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-        </ul>
-        <div class="body">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+        <nav>
+			<ul>
+				<li><a class="home" href="\${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			</ul>
+        </nav>
+        <article>
+			<header>
+            	<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			</header>
             <g:if test="\${flash.message}">
-            	<div class="message">\${flash.message}</div>
+            <div class="message">\${flash.message}</div>
             </g:if>
-            <div class="list">
+            <section class="list">
                 <table>
                     <thead>
                         <tr>
@@ -34,8 +38,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="\${${propertyName}List}" var="${propertyName}">
-                        <tr>
+                    <g:each in="\${${propertyName}List}" status="i" var="${propertyName}">
+                        <tr class="\${(i % 2) == 0 ? 'odd' : 'even'}">
                         <%  props.eachWithIndex { p, i ->
                                 cp = domainClass.constrainedProperties[p.name]
                                 if (i == 0) { %>
@@ -52,10 +56,10 @@
                     </g:each>
                     </tbody>
                 </table>
-            </div>
+            </section>
             <div class="paginateButtons">
                 <g:paginate total="\${${propertyName}Total}" />
             </div>
-        </div>
+        </article>
     </body>
 </html>
