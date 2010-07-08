@@ -269,6 +269,10 @@ th.desc a {
 	white-space: nowrap;
 }
 
+.dialog fieldset ul li label:after {
+	content: ':';
+}
+
 .dialog dl {
 	border: 1px solid #ccc;
 	padding: 5px 2px;
@@ -283,6 +287,10 @@ th.desc a {
 	clear: left;
 	float: left;
 	width: 12em; /* TODO: hmm */
+}
+
+.dialog dl dt:after {
+	content: ':';
 }
 
 .dialog dl dd {
