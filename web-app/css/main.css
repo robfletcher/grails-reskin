@@ -80,13 +80,13 @@ nav {
 }
 
 nav ul {
+	list-style-type: none;
 	padding: 0;
 }
 
 nav ul li {
 	display: inline-block;
 	font-size: 10px;
-	list-style-type: none;
 	padding: 0 5px;
 }
 
@@ -143,11 +143,11 @@ div.errors li {
 	padding-left: 30px;
 }
 
-td.errors select {
+.errors select {
 	border: 1px solid red;
 }
 
-td.errors input {
+.errors input {
 	border: 1px solid red;
 }
 
@@ -251,7 +251,22 @@ th.desc a {
 
 .dialog fieldset {
 	border: 1px solid #ccc;
-	padding: 5px 0;
+	padding: 5px 2px;
+}
+
+.dialog fieldset ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.dialog fieldset ul li {
+	padding: 5px 6px;
+}
+
+.dialog fieldset ul li label {
+	display: inline-block;
+	width: 12em; /* TODO: hmm */
+	white-space: nowrap;
 }
 
 .prop {
@@ -271,7 +286,7 @@ th.desc a {
 
 /* ACTION BUTTONS */
 
-.buttons {
+fieldset.buttons {
 	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
 	border: 1px solid #ccc;
 	color: #666;
@@ -281,7 +296,7 @@ th.desc a {
 	padding: 0;
 }
 
-.buttons input {
+fieldset.buttons input {
 	background: #fff;
 	border: 0;
 	color: #333;
@@ -293,17 +308,17 @@ th.desc a {
 	padding: 2px 6px;
 }
 
-.buttons input.delete {
+fieldset.buttons input.delete {
 	background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;
 	padding-left: 28px;
 }
 
-.buttons input.edit {
+fieldset.buttons input.edit {
 	background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
 	padding-left: 28px;
 }
 
-.buttons input.save {
+fieldset.buttons input.save {
 	background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
 	padding-left: 28px;
 }

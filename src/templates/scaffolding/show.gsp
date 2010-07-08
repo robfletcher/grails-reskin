@@ -54,14 +54,14 @@
                     <%  } %>
                     </tbody>
                 </table>
-            </section>
-            <section class="buttons">
-                <g:form>
-                    <g:hiddenField name="id" value="\${${propertyName}?.id}" />
-                    <g:actionSubmit class="edit" action="edit" value="\${message(code: 'default.button.edit.label', default: 'Edit')}" />
-                    <g:actionSubmit class="delete" action="delete" value="\${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('\${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </g:form>
-            </section>
+				<fieldset class="buttons">
+					<g:form>
+						<g:hiddenField name="id" value="\${${propertyName}?.id}" />
+						<g:actionSubmit class="edit" action="edit" value="\${message(code: 'default.button.edit.label', default: 'Edit')}" />
+						<g:actionSubmit class="delete" action="delete" value="\${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('\${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</g:form>
+				</fieldset>
+			</section>
         </article>
     </body>
 </html>

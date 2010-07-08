@@ -29,6 +29,7 @@
             <g:form action="save" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
                 <section class="dialog">
                     <fieldset>
+						<ul>
                         <%  excludedProps = Event.allEvents.toList() << 'version' << 'id' << 'dateCreated' << 'lastUpdated'
                             props = domainClass.properties.findAll { !excludedProps.contains(it.name) }
                             Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
@@ -37,19 +38,42 @@
                                     cp = domainClass.constrainedProperties[p.name]
                                     display = (cp ? cp.display : true)
                                     if (display) { %>
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="${p.name}"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></label>
-                                </td>
-                                <td valign="top" class="value \${hasErrors(bean: ${propertyName}, field: '${p.name}', 'errors')}">
-                                    ${renderEditor(p)}
-                                </td>
-                            </tr>
+                            <li class="prop \${hasErrors(bean: ${propertyName}, field: '${p.name}', 'errors')}">
+								<label for="${p.name}"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></label>
+								${renderEditor(p)}
+                            </li>
                         <%  }   }   } %>
+						</ul>
                     </fieldset>
+					<fieldset class="buttons">
+						<g:submitButton name="create" class="save" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
+					</fieldset>
                 </section>
-                <section class="buttons">
-                    <g:submitButton name="create" class="save" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
+            </g:form>
+            <g:form action="save" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+                <section class="dialog">
+					<table><tbody>
+					<%  excludedProps = Event.allEvents.toList() << 'version' << 'id' << 'dateCreated' << 'lastUpdated'
+						props = domainClass.properties.findAll { !excludedProps.contains(it.name) }
+						Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
+						props.each { p ->
+							if (!Collection.class.isAssignableFrom(p.type)) {
+								cp = domainClass.constrainedProperties[p.name]
+								display = (cp ? cp.display : true)
+								if (display) { %>
+						<tr class="prop">
+							<td valign="top" class="name">
+								<label for="${p.name}"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></label>
+							</td>
+							<td valign="top" class="value \${hasErrors(bean: ${propertyName}, field: '${p.name}', 'errors')}">
+								${renderEditor(p)}
+							</td>
+						</tr>
+					<%  }   }   } %>
+						</tbody></table>
+					<fieldset class="buttons">
+						<g:submitButton name="create" class="save" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
+					</fieldset>
                 </section>
             </g:form>
         </article>
