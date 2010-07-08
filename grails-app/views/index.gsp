@@ -59,8 +59,8 @@
 		}
 
 		article {
-			margin-left: 280px;
-			margin-right: 20px;
+			float: none;
+			margin: 0 20px 10px 280px;
 		}
 		</style>
 	</head>

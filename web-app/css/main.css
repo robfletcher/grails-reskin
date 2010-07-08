@@ -21,7 +21,7 @@ body {
 }
 
 a#grailsLogo {
-	display: block;
+	display: inline-block;
 	padding: 20px;
 }
 
