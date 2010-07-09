@@ -4,10 +4,12 @@
         out << renderNumberEditor(domainClass, property)
     else if (property.type == String.class)
         out << renderStringEditor(domainClass, property)
-    else if (property.type == Date.class || property.type == java.sql.Date.class || property.type == java.sql.Time.class || property.type == Calendar.class)
+    else if (property.type == Date.class || property.type == java.sql.Date.class || property.type == Calendar.class)
         out << renderDateEditor(domainClass, property)
+    else if (property.type == java.sql.Time.class)
+        out << renderTimeEditor(domainClass, property)
     else if (property.type == URL.class)
-        out << renderStringEditor(domainClass, property)
+        out << renderUrlEditor(domainClass, property)
     else if (property.isEnum())
         out << renderEnumEditor(domainClass, property)
     else if (property.type == TimeZone.class)
@@ -35,24 +37,26 @@
         if (!cp) {
             return "<g:textField name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
         }
-        else {
-            if ("textarea" == cp.widget || (cp.maxSize > 250 && !cp.password && !cp.inList)) {
-                return "<g:textArea name=\"${property.name}\" cols=\"40\" rows=\"5\" value=\"\${${domainInstance}?.${property.name}}\" />"
-            }
-            else {
-                if (cp.inList) {
-                    return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${${domainInstance}?.${property.name}}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
-                }
-                else {
-                    def sb = new StringBuffer("<g:")
-                    cp.password ? sb << "passwordField " : sb << "textField "
-                    sb << "name=\"${property.name}\" "
-                    if (cp.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
-                    if (!cp.editable) sb << "readonly=\"readonly\" "
-                    sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
-                    return sb.toString()
-                }
-            }
+        else if (cp.email) {
+        	return renderEmailEditor(domainClass, property)
+        }
+        else if (cp.url) {
+        	return renderUrlEditor(domainClass, property)
+        }
+        else if ("textarea" == cp.widget || (cp.maxSize > 250 && !cp.password && !cp.inList)) {
+			return "<g:textArea name=\"${property.name}\" cols=\"40\" rows=\"5\" value=\"\${${domainInstance}?.${property.name}}\" />"
+		}
+		else if (cp.inList) {
+			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${${domainInstance}?.${property.name}}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+		}
+		else {
+			def sb = new StringBuffer("<g:")
+			cp.password ? sb << "passwordField " : sb << "textField "
+			sb << "name=\"${property.name}\" "
+			if (cp.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
+			if (!cp.editable) sb << "readonly=\"readonly\" "
+			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
+			return sb.toString()
         }
     }
 
@@ -92,17 +96,21 @@
                 return "<g:textField name=\"${property.name}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" />"
             }
         }
-        else {
-            if (cp.range) {
-                return "<g:select name=\"${property.name}\" from=\"\${${cp.range.from}..${cp.range.to}}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" ${renderNoSelection(property)} />"
-            }
-            else if (cp.inList) {
-                return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
-            }            
-            else {
-                return "<g:textField name=\"${property.name}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" />"
-            }
-        }
+        else if (cp.range) {
+			return "<g:field type=\"range\" name=\"${property.name}\" min=\"\${${cp.range.from}\" max=\"${cp.range.to}}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" />"
+		}
+		else if (cp.inList) {
+			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+		}
+		else {
+			def sb = new StringBuffer("<g:field type=\"number\" ")
+			sb << "name=\"${property.name}\" "
+			if (cp.min != null) sb << "min=\"${cp.min}\" "
+			if (cp.max != null) sb << "max=\"${cp.max}\" "
+			if (!cp.editable) sb << "readonly=\"readonly\" "
+			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
+			return sb.toString()
+		}
      }
 
     private renderBooleanEditor(domainClass, property) {
@@ -121,24 +129,20 @@
     }
 
     private renderDateEditor(domainClass, property) {
-        def precision = (property.type == Date.class || property.type == java.sql.Date.class || property.type == Calendar.class) ? "day" : "minute";
-        if (!cp) {
-            return "<g:datePicker name=\"${property.name}\" precision=\"${precision}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+        def type = (property.type == Date.class || property.type == java.sql.Date.class || property.type == Calendar.class) ? "date" : "datetime";
+        def format = type == "date" ? "yyyy-MM-dd" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        if (cp && !cp.editable) {
+			return "\${${domainInstance}?.${property.name}?.format('${format}')}"
+		} else {
+            return "<g:field type=\"${type}\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\" />"
         }
-        else {
-            if (!cp.editable) {
-                return "\${${domainInstance}?.${property.name}?.toString()}"
-            }
-            else {
-                def sb = new StringBuffer("<g:datePicker name=\"${property.name}\" ")
-                if (cp.format) sb << "format=\"${cp.format}\" "
-                if (cp.widget) sb << "widget=\"${cp.widget}\" "
-                cp.attributes.each { k, v ->
-                    sb << "${k}=\"${v}\" "
-                }
-                sb << "precision=\"${precision}\" value=\"\${${domainInstance}?.${property.name}}\" ${renderNoSelection(property)} />"
-                return sb.toString()
-            }
+    }
+
+    private renderTimeEditor(domainClass, property) {
+        if (cp && !cp.editable) {
+			return "\${${domainInstance}?.${property.name}?.toString()}"
+		} else {
+            return "<g:field type=\"time\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
         }
     }
 
@@ -168,4 +172,39 @@
         }
         return ""
     }
+
+    private renderUrlEditor(domainClass, property) {
+        if (!cp) {
+            return "<g:field type=\"url\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+        }
+        else if (cp.inList) {
+			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${${domainInstance}?.${property.name}}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+		}
+		else {
+			def sb = new StringBuffer("<g:field type=\"url\" ")
+			sb << "name=\"${property.name}\" "
+			if (cp.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
+			if (!cp.editable) sb << "readonly=\"readonly\" "
+			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
+			return sb.toString()
+		}
+    }
+
+    private renderEmailEditor(domainClass, property) {
+        if (!cp) {
+            return "<g:field type=\"email\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+        }
+        else if (cp.inList) {
+			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${${domainInstance}?.${property.name}}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+		}
+		else {
+			def sb = new StringBuffer("<g:field type=\"email\" ")
+			sb << "name=\"${property.name}\" "
+			if (cp.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
+			if (!cp.editable) sb << "readonly=\"readonly\" "
+			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
+			return sb.toString()
+		}
+    }
+
 %>

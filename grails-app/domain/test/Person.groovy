@@ -17,4 +17,8 @@ class Person {
 		spouse nullable: true
 		numberOfChildren min: 0
     }
+
+	String toString() {
+		name
+	}
 }
