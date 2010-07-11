@@ -274,7 +274,17 @@ th.desc a {
 }
 
 .dialog fieldset ul li label:after {
-	content: ':';
+	content: ' :';
+}
+
+.dialog fieldset ul li label.required {
+	font-weight: bold;
+}
+
+.dialog fieldset ul li label.required:after {
+	color: #f00;
+	content: ' *';
+	vertical-align: middle;
 }
 
 .dialog dl {

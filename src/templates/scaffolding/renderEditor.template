@@ -30,12 +30,12 @@
         out << renderOneToMany(domainClass, property)
 
     private renderEnumEditor(domainClass, property) {
-        return "<g:select name=\"${property.name}\" from=\"\${${property.type.name}?.values()}\" value=\"\${${domainInstance}?.${property.name}}\" ${renderNoSelection(property)} />"
+        return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${property.type.name}?.values()}\" ${renderNoSelection(property)} />"
     }
 
     private renderStringEditor(domainClass, property) {
         if (!cp) {
-            return "<g:textField name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+            return "<bean:input beanName=\"${domainInstance}\" property=\"${property.name}\" />"
         }
         else if (cp.email) {
         	return renderEmailEditor(domainClass, property)
@@ -44,34 +44,31 @@
         	return renderUrlEditor(domainClass, property)
         }
         else if ("textarea" == cp.widget || (cp.maxSize > 250 && !cp.password && !cp.inList)) {
-			return "<g:textArea name=\"${property.name}\" cols=\"40\" rows=\"5\" value=\"\${${domainInstance}?.${property.name}}\" />"
+			return "<bean:textArea beanName=\"${domainInstance}\" property=\"${property.name}\" cols=\"40\" rows=\"5\" />"
 		}
 		else if (cp.inList) {
-			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${${domainInstance}?.${property.name}}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
+		}
+		else if (cp.password) {
+			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"password\" name=\"${property.name}\" id=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
 		}
 		else {
-			def sb = new StringBuffer("<g:")
-			cp.password ? sb << "passwordField " : sb << "textField "
-			sb << "name=\"${property.name}\" "
-			if (cp.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
-			if (!cp.editable) sb << "readonly=\"readonly\" "
-			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
-			return sb.toString()
+			return "<bean:input beanName=\"${domainInstance}\" property=\"${property.name}\" />"
         }
     }
 
     private renderByteArrayEditor(domainClass, property) {
-        return "<input type=\"file\" id=\"${property.name}\" name=\"${property.name}\" />"
+        return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"file\" id=\"${property.name}\" name=\"${property.name}\" /></bean:customField>"
     }
 
     private renderManyToOne(domainClass,property) {
         if (property.association) {
-            return "<g:select name=\"${property.name}.id\" from=\"\${${property.type.name}.list()}\" optionKey=\"id\" value=\"\${${domainInstance}?.${property.name}?.id}\" ${renderNoSelection(property)} />"
+            return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${property.type.name}.list()}\" ${renderNoSelection(property)} />"
         }
     }
 
     private renderManyToMany(domainClass, property) {
-        return "<g:select name=\"${property.name}\" from=\"\${${property.referencedDomainClass.fullName}.list()}\" multiple=\"yes\" optionKey=\"id\" size=\"5\" value=\"\${${domainInstance}?.${property.name}*.id}\" />"
+        return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${property.referencedDomainClass.fullName}.list()}\" multiple=\"yes\" size=\"5\" />"
     }
 
     private renderOneToMany(domainClass, property) {
@@ -90,35 +87,40 @@
     private renderNumberEditor(domainClass, property) {
         if (!cp) {
             if (property.type == Byte.class) {
-                return "<g:select name=\"${property.name}\" from=\"\${-128..127}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" />"
+                return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" name=\"${property.name}\" min=\"-128\" max=\"127\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
             }
             else {
-                return "<g:textField name=\"${property.name}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" />"
+                return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" name=\"${property.name}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
             }
         }
         else if (cp.range) {
-			return "<g:field type=\"range\" name=\"${property.name}\" min=\"\${${cp.range.from}\" max=\"${cp.range.to}}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" />"
+			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"range\" name=\"${property.name}\" min=\"${cp.range.from}\" max=\"${cp.range.to}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
 		}
 		else if (cp.inList) {
-			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else {
-			def sb = new StringBuffer("<g:field type=\"number\" ")
+			def sb = new StringBuffer("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" ")
 			sb << "name=\"${property.name}\" "
-			if (cp.min != null) sb << "min=\"${cp.min}\" "
-			if (cp.max != null) sb << "max=\"${cp.max}\" "
+			if (property.type == Byte.class) {
+				sb << "min=\"-128\" "
+				sb << "max=\"127\" "
+			} else {
+				if (cp.min != null) sb << "min=\"${cp.min}\" "
+				if (cp.max != null) sb << "max=\"${cp.max}\" "
+			}
 			if (!cp.editable) sb << "readonly=\"readonly\" "
-			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
+			sb << "value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
 			return sb.toString()
 		}
      }
 
     private renderBooleanEditor(domainClass, property) {
         if (!cp) {
-            return "<g:checkBox name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+            return "<bean:checkBox beanName=\"${domainInstance}\" property=\"${property.name}\" />"
         }
         else {
-            def sb = new StringBuffer("<g:checkBox name=\"${property.name}\" ")
+            def sb = new StringBuffer("<bean:checkBox beanName=\"${domainInstance}\" property=\"${property.name}\" ")
             if (cp.widget) sb << "widget=\"${cp.widget}\" ";
             cp.attributes.each { k, v ->
                 sb << "${k}=\"${v}\" "
@@ -134,7 +136,7 @@
         if (cp && !cp.editable) {
 			return "\${${domainInstance}?.${property.name}?.format('${format}')}"
 		} else {
-            return "<g:field type=\"${type}\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\" />"
+			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"${type}\" name=\"${property.name}\" id=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\"/></bean:customField>"
         }
     }
 
@@ -142,10 +144,11 @@
         if (cp && !cp.editable) {
 			return "\${${domainInstance}?.${property.name}?.toString()}"
 		} else {
-            return "<g:field type=\"time\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+            return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"time\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('HH:mm:ss.SSS')}\" /></bean:customField>"
         }
     }
 
+	// TODO: beanfieldsify
     private renderSelectTypeEditor(type, domainClass,property) {
         if (!cp) {
             return "<g:${type}Select name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
@@ -175,34 +178,34 @@
 
     private renderUrlEditor(domainClass, property) {
         if (!cp) {
-            return "<g:field type=\"url\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+            return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"url\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
         }
         else if (cp.inList) {
-			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${${domainInstance}?.${property.name}}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else {
-			def sb = new StringBuffer("<g:field type=\"url\" ")
+			def sb = new StringBuffer("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"url\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
 			if (!cp.editable) sb << "readonly=\"readonly\" "
-			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
+			sb << "value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
 			return sb.toString()
 		}
     }
 
     private renderEmailEditor(domainClass, property) {
         if (!cp) {
-            return "<g:field type=\"email\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+            return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"email\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
         }
         else if (cp.inList) {
-			return "<g:select name=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" value=\"\${${domainInstance}?.${property.name}}\" valueMessagePrefix=\"${domainClass.propertyName}.${property?.name}\" ${renderNoSelection(property)} />"
+			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else {
-			def sb = new StringBuffer("<g:field type=\"email\" ")
+			def sb = new StringBuffer("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"email\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
 			if (!cp.editable) sb << "readonly=\"readonly\" "
-			sb << "value=\"\${${domainInstance}?.${property.name}}\" />"
+			sb << "value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
 			return sb.toString()
 		}
     }

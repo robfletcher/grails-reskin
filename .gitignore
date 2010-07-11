@@ -1,3 +1,4 @@
 devDB.*
 target/
 .idea/
+*.log

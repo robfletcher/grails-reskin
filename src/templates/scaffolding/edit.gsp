@@ -2,6 +2,10 @@
 <% import grails.persistence.Event %>
 <% import org.codehaus.groovy.grails.plugins.PluginManagerHolder %>
 <%=packageName%>
+<bean:requiredIndicator>required</bean:requiredIndicator>
+<bean:inputTemplate>\${label}\${field}<g:if test="\${errors}">\${errors}</g:if></bean:inputTemplate>
+<bean:labelTemplate><label for="\${fieldId}" class="\${errorClassToUse}\${required}">\${label}</label></bean:labelTemplate>
+<bean:errorTemplate><span class="errorMessage">\${message.encodeAsHTML()}</span></bean:errorTemplate>
 <html>
     <head>
         <meta name="layout" content="main" />
@@ -45,11 +49,8 @@
 									display = (cp?.display ?: true)
 								}
                                 if (display) { %>
-							<li class="prop \${hasErrors(bean: ${propertyName}, field: '${p.name}', 'errors')}">
-								<label for="${p.name}"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></label>
-								${renderEditor(p)}
-							</li>
-                        <%  }   } %>
+							<li class="prop">${renderEditor(p)}</li>
+							<%  }   } %>
 						</ul>
                     </fieldset>
 					<fieldset class="buttons">

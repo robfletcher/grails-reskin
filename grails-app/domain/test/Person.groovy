@@ -3,22 +3,28 @@ package test
 class Person {
 
 	String name
-	Date dateOfBirth
+	String password
+	Date birthdate
+	Gender gender
 	String email
 	URL website
 	Person spouse
-	Integer numberOfChildren
 
     static constraints = {
 		name blank: false, unique: true
-		dateOfBirth nullable: true
+		password blank: false, password: true
+		birthdate nullable: true
+		gender()
 		email nullable: true, email: true
 		website nullable: true
 		spouse nullable: true
-		numberOfChildren min: 0
     }
 
 	String toString() {
 		name
 	}
+}
+
+enum Gender {
+	MALE, FEMALE
 }
