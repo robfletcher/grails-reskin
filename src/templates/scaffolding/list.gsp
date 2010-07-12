@@ -19,7 +19,7 @@
 				<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			</header>
 			<g:if test="\${flash.message}">
-			<div class="message">\${flash.message}</div>
+			<aside class="message">\${flash.message}</aside>
 			</g:if>
 			<table>
 				<thead>
