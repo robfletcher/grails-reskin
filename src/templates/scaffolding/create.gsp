@@ -4,7 +4,7 @@
 <%=packageName%>
 <bean:requiredIndicator>required</bean:requiredIndicator>
 <bean:inputTemplate>\${label}\${field}<g:if test="\${errors}">\${errors}</g:if></bean:inputTemplate>
-<bean:labelTemplate><label for="\${fieldId}" class="\${errorClassToUse}\${required}">\${label}</label></bean:labelTemplate>
+<bean:labelTemplate><label for="\${fieldId}" class="\${errorClassToUse} \${required}">\${label}</label></bean:labelTemplate>
 <bean:errorTemplate><span class="errorMessage">\${message.encodeAsHTML()}</span></bean:errorTemplate>
 <html>
     <head>
@@ -19,43 +19,41 @@
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
         </nav>
-        <article>
+		<section class="dialog">
 			<header>
-            	<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+				<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 			</header>
-            <g:if test="\${flash.message}">
-            <div class="message">\${flash.message}</div>
-            </g:if>
-            <g:hasErrors bean="\${${propertyName}}">
-            <div class="errors">
-                <g:renderErrors bean="\${${propertyName}}" as="list" />
-            </div>
-            </g:hasErrors>
-            <g:form action="save" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
-                <section class="dialog">
-                    <fieldset>
-						<ul>
-                        <%  excludedProps = Event.allEvents.toList() << 'version' << 'id' << 'dateCreated' << 'lastUpdated'
-                            props = domainClass.properties.findAll { !excludedProps.contains(it.name) }
-                            Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
-                            display = true
-                            boolean hasHibernate = PluginManagerHolder.pluginManager.hasGrailsPlugin('hibernate')
-                            props.each { p ->
-                                if (!Collection.class.isAssignableFrom(p.type)) {
-									if (hasHibernate) {
-										cp = domainClass.constrainedProperties[p.name]
-										display = (cp ? cp.display : true)
-									}
-                                    if (display) { %>
-							<li>${renderEditor(p)}</li>
-                        <%  }   }   } %>
-						</ul>
-                    </fieldset>
-					<fieldset class="buttons">
-						<g:submitButton name="create" class="save" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
-					</fieldset>
-                </section>
-            </g:form>
-        </article>
+			<g:if test="\${flash.message}">
+			<aside class="message">\${flash.message}</aside>
+			</g:if>
+			<g:hasErrors bean="\${${propertyName}}">
+			<aside class="errors">
+				<g:renderErrors bean="\${${propertyName}}" as="list" />
+			</aside>
+			</g:hasErrors>
+			<g:form action="save" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+				<fieldset>
+					<ul>
+					<%  excludedProps = Event.allEvents.toList() << 'version' << 'id' << 'dateCreated' << 'lastUpdated'
+						props = domainClass.properties.findAll { !excludedProps.contains(it.name) }
+						Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
+						display = true
+						boolean hasHibernate = PluginManagerHolder.pluginManager.hasGrailsPlugin('hibernate')
+						props.each { p ->
+							if (!Collection.class.isAssignableFrom(p.type)) {
+								if (hasHibernate) {
+									cp = domainClass.constrainedProperties[p.name]
+									display = (cp ? cp.display : true)
+								}
+								if (display) { %>
+						<li>${renderEditor(p)}</li>
+					<%  }   }   } %>
+					</ul>
+				</fieldset>
+				<fieldset class="buttons">
+					<g:submitButton name="create" class="save" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
+				</fieldset>
+			</g:form>
+		</section>
     </body>
 </html>

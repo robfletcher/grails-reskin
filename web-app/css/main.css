@@ -68,9 +68,8 @@ input:focus, select:focus, textarea:focus {
 	border: 1px solid #b2d1ff;
 }
 
-article {
-	clear: both;
-	float: left; /* TODO: get rid of this it causes tons of cross-browser problems */
+/* TODO: this selector probably won't work in IE */
+body > section {
 	margin: 0 15px 10px 15px;
 }
 
@@ -123,7 +122,7 @@ nav a.create {
 
 /* MESSAGES AND ERRORS */
 
-.message {
+aside.message {
 	background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
 	border: 1px solid #b2d1ff;
 	color: #006dba;
@@ -131,7 +130,7 @@ nav a.create {
 	padding: 5px 5px 5px 30px
 }
 
-div.errors {
+aside.errors {
 	background: #fff3f3;
 	border: 1px solid red;
 	color: #cc0000;
@@ -139,22 +138,22 @@ div.errors {
 	padding: 5px 0 5px 0;
 }
 
-div.errors ul {
+aside.errors ul {
 	list-style: none;
 	padding: 0;
 }
 
-div.errors li {
+aside.errors li {
 	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
 	line-height: 16px;
 	padding-left: 30px;
 }
 
-.errors select {
+select.error {
 	border: 1px solid red;
 }
 
-.errors input {
+input.error {
 	border: 1px solid red;
 }
 
@@ -231,7 +230,7 @@ th.desc a {
 
 /* PAGINATION */
 
-.paginateButtons {
+fieldset.paginateButtons {
 	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
 	border: 1px solid #ccc;
 	border-top: 0;
@@ -241,7 +240,7 @@ th.desc a {
 	padding: 10px 3px;
 }
 
-.paginateButtons a {
+fieldset.paginateButtons a {
 	background: #fff;
 	border: 1px solid #ccc;
 	border-color: #ccc #aaa #aaa #ccc;
@@ -250,7 +249,7 @@ th.desc a {
 	padding: 2px 6px;
 }
 
-.paginateButtons span {
+fieldset.paginateButtons span {
 	padding: 2px 3px;
 }
 

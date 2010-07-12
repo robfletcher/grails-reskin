@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat
 
 class InputTypeTests extends FunctionalTestCase {
 
-	static person1, person2
+	static Person person1, person2
 
 	@BeforeClass
 	static void setUpFixture() {
