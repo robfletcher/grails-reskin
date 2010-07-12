@@ -9,6 +9,9 @@
 			margin-left: 30px;
 			width: 228px;
 			float: left;
+			/* the good old double margin float bug in IE6 */
+			_margin-left: 15px;
+			height: auto;
 		}
 
 		aside section * {
@@ -17,7 +20,6 @@
 
 		aside section ul {
 			list-style-type: none;
-			margin-bottom: 10px;
 		}
 
 		aside section h1 {
@@ -33,7 +35,7 @@
 		}
 
 		aside section:first-of-type {
-			padding: 15px 15px 10px;
+			padding: 15px;
 		}
 
 		aside section:last-of-type {

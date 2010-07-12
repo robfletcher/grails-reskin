@@ -69,6 +69,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 article {
+	clear: both;
 	float: left;
 	margin: 0 15px 10px 15px;
 }
@@ -86,12 +87,14 @@ nav {
 nav ul {
 	list-style-type: none;
 	padding: 0;
+	_zoom: 1;
 }
 
 nav ul li {
 	display: inline-block;
 	font-size: 10px;
 	padding: 0 5px;
+	_float: left;
 }
 
 nav a {
@@ -290,6 +293,7 @@ th.desc a {
 .dialog dl {
 	border: 1px solid #ccc;
 	padding: 5px 2px;
+	_zoom: 1;
 }
 
 .dialog dl dt,
@@ -311,6 +315,7 @@ th.desc a {
 .dialog dl dd {
 	margin-left: 12em;
 	min-height: 15px; /* TODO: hmm */
+	_height: 15px;
 }
 
 /* ACTION BUTTONS */
