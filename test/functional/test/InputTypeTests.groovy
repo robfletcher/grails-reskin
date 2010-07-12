@@ -60,6 +60,7 @@ class InputTypeTests extends FunctionalTestCase {
 		HtmlElement element = byName("gender")
 		assertThat "input type", element.tagName, equalTo("select")
 		assertThat "input options", element.options.valueAttribute, hasItems("MALE", "FEMALE")
+		assertThat "input labels", element.options.text, hasItems("Male", "Female")
 		assertThat "selected option", element.selectedOptions.valueAttribute, equalTo(["MALE"])
 	}
 
@@ -89,6 +90,7 @@ class InputTypeTests extends FunctionalTestCase {
 		HtmlElement element = byName("spouse.id")
 		assertThat "input type", element.tagName, equalTo("select")
 		assertThat "input options", element.options.valueAttribute, hasItems("null", "$person1.id" as String, "$person2.id" as String)
+		assertThat "input labels", element.options.text, hasItems("", person1.toString(), person2.toString())
 	}
 
 }

@@ -30,7 +30,13 @@
         out << renderOneToMany(domainClass, property)
 
     private renderEnumEditor(domainClass, property) {
-        return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${property.type.name}?.values()}\" ${renderNoSelection(property)} />"
+    	def sb = new StringBuilder("<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${property.type.name}?.values()}\" ")
+    	// TODO: this doesn't actually use the MessageSourceResolvable interface properly
+        if (org.springframework.context.MessageSourceResolvable.isAssignableFrom(property.type)) {
+        	sb << "valueMessagePrefix=\"${property.type.name}\" "
+        }
+        sb << "${renderNoSelection(property)} />"
+        return sb.toString()
     }
 
     private renderStringEditor(domainClass, property) {
@@ -92,7 +98,7 @@
                 return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" name=\"${property.name}\" min=\"-128\" max=\"127\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
 		}
 		else {
-			def sb = new StringBuffer("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" ")
+			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp?.min != null) sb << "min=\"${cp.min}\" "
 			if (cp?.max != null) sb << "max=\"${cp.max}\" "
@@ -103,7 +109,7 @@
      }
 
     private renderBooleanEditor(domainClass, property) {
-		def sb = new StringBuffer("<bean:checkBox beanName=\"${domainInstance}\" property=\"${property.name}\" ")
+		def sb = new StringBuilder("<bean:checkBox beanName=\"${domainInstance}\" property=\"${property.name}\" ")
 		if (cp?.widget) sb << "widget=\"${cp.widget}\" ";
 		cp?.attributes?.each { k, v ->
 			sb << "${k}=\"${v}\" "
@@ -118,7 +124,7 @@
         if (cp && !cp.editable) {
 			return "\${${domainInstance}?.${property.name}?.format('${format}')}"
 		} else {
-			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"${type}\" name=\"${property.name}\" id=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\"/></bean:customField>"
+			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"${type}\" class=\"${type}\" name=\"${property.name}\" id=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\"/></bean:customField>"
         }
     }
 
@@ -136,7 +142,7 @@
             return "<g:${type}Select name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" />"
         }
         else {
-            def sb = new StringBuffer("<g:${type}Select name=\"${property.name}\" ")
+            def sb = new StringBuilder("<g:${type}Select name=\"${property.name}\" ")
             if (cp.widget) sb << "widget=\"${cp.widget}\" ";
             cp.attributes.each { k, v ->
                 sb << "${k}=\"${v}\" "
@@ -163,7 +169,7 @@
 			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else {
-			def sb = new StringBuffer("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"url\" ")
+			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"url\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp?.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
 			if (cp && !cp.editable) sb << "readonly=\"readonly\" "
@@ -177,7 +183,7 @@
 			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else {
-			def sb = new StringBuffer("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"email\" ")
+			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"email\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp?.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
 			if (cp && !cp.editable) sb << "readonly=\"readonly\" "
