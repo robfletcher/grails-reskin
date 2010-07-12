@@ -56,9 +56,9 @@
 				</g:each>
 				</tbody>
 			</table>
-			<fieldset class="paginateButtons">
+			<nav class="paginateButtons">
 				<g:paginate total="\${${propertyName}Total}" />
-			</fieldset>
+			</nav>
 		</section>
     </body>
 </html>

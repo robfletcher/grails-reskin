@@ -17,7 +17,7 @@
 			<img src="${resource(dir: 'images', file: 'spinner.gif')}" alt="Spinner"/>
 		</div>
 		<header>
-			<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails" border="0"/></a>
+			<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
 		</header>
 		<g:layoutBody/>
 	</body>
