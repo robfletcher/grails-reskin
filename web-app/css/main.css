@@ -70,7 +70,7 @@ input:focus, select:focus, textarea:focus {
 
 article {
 	clear: both;
-	float: left;
+	float: left; /* TODO: get rid of this it causes tons of cross-browser problems */
 	margin: 0 15px 10px 15px;
 }
 
@@ -87,14 +87,14 @@ nav {
 nav ul {
 	list-style-type: none;
 	padding: 0;
-	_zoom: 1;
+	*zoom: 1;
 }
 
 nav ul li {
 	display: inline-block;
 	font-size: 10px;
 	padding: 0 5px;
-	_float: left;
+	*float: left;
 }
 
 nav a {
