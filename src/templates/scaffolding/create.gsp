@@ -4,6 +4,8 @@
 <%=packageName%>
 <bean:requiredIndicator>required</bean:requiredIndicator>
 <bean:inputTemplate>\${label}\${field}<g:if test="\${errors}">\${errors}</g:if></bean:inputTemplate>
+<bean:customTemplate>\${label}\${field}<g:if test="\${errors}">\${errors}</g:if></bean:customTemplate>
+<bean:selectTemplate>\${label}\${field}<g:if test="\${errors}">\${errors}</g:if></bean:selectTemplate>
 <bean:labelTemplate><label for="\${fieldId}" class="\${errorClassToUse} \${required}">\${label}</label></bean:labelTemplate>
 <bean:errorTemplate><span class="errorMessage">\${message.encodeAsHTML()}</span></bean:errorTemplate>
 <html>
