@@ -301,30 +301,16 @@ th.desc a {
 	clear: left;
 	float: left;
 	width: 12em; /* TODO: hmm */
+	white-space: nowrap;
 }
 
 .dialog dl dt:after {
-	content: ':';
+	content: ' :';
 }
 
 .dialog dl dd {
 	margin-left: 12em;
 	min-height: 15px; /* TODO: hmm */
-}
-
-.prop {
-	padding: 5px;
-}
-
-.prop .name {
-	text-align: left;
-	width: 15%;
-	white-space: nowrap;
-}
-
-.prop .value {
-	text-align: left;
-	width: 85%;
 }
 
 /* ACTION BUTTONS */

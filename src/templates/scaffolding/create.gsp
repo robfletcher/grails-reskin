@@ -47,7 +47,7 @@
 										display = (cp ? cp.display : true)
 									}
                                     if (display) { %>
-							<li class="prop">${renderEditor(p)}</li>
+							<li>${renderEditor(p)}</li>
                         <%  }   }   } %>
 						</ul>
                     </fieldset>

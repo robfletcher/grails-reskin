@@ -2,6 +2,7 @@ package test
 
 class Person {
 
+	Title title
 	String name
 	String password
 	Date birthdate
@@ -11,6 +12,7 @@ class Person {
 	Person spouse
 
     static constraints = {
+		title nullable: true
 		name blank: false, unique: true
 		password blank: false, password: true
 		birthdate nullable: true
@@ -23,6 +25,10 @@ class Person {
 	String toString() {
 		name
 	}
+}
+
+enum Title {
+	MR, MRS, MS, DR
 }
 
 enum Gender {
