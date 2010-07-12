@@ -5,8 +5,13 @@ This is an attempt to reskin the standard Grails scaffolding and index pages usi
 ## To-do
 
 * Complete reskinning of scaffolding
-* Create input tags for new HTML5 input types
-* Render appropriate HTML5 inputs in scaffolding
-   * value attribute needs to be in correct format for date+time inputs
-* Add HTML5 for IE support
-* Add modernizr
+    * definition lists? Really?
+    * index page aside
+    * main body shouldn't be float: left
+    * style error messages supplied by bean-fields and get rid of duplication at top of form
+* Semantics
+    * div.message and div.errors should be asides
+    * article isn't used correctly, should be section
+    * header should precede section not be contained within it (check this)
+* Ensure everything works in IE
+
