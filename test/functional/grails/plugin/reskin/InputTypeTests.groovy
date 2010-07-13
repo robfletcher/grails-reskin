@@ -1,4 +1,4 @@
-package test
+package grails.plugin.reskin
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement
 import functionaltestplugin.FunctionalTestCase
@@ -6,6 +6,7 @@ import org.junit.AfterClass
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test
+import test.Person
 import static javax.servlet.http.HttpServletResponse.SC_OK
 import static org.hamcrest.Matchers.equalTo
 import static org.hamcrest.Matchers.hasItems

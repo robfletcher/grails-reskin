@@ -10,12 +10,8 @@
 		<g:javascript library="jquery" plugin="jquery"/>
 		<jqui:resources components="datepicker" mode="normal" />
 		<g:javascript library="html5-support"/>
-		<g:javascript library="application"/>
 	</head>
 	<body>
-		<div id="spinner" class="spinner" style="display:none;">
-			<img src="${resource(dir: 'images', file: 'spinner.gif')}" alt="Spinner"/>
-		</div>
 		<header>
 			<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
 		</header>

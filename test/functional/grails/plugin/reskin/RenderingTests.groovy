@@ -1,16 +1,14 @@
-package test
+package grails.plugin.reskin
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement
 import functionaltestplugin.FunctionalTestCase
+import org.junit.AfterClass
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
-import static com.gargoylesoftware.htmlunit.html.DomElement.ATTRIBUTE_NOT_DEFINED
+import test.Person
 import static javax.servlet.http.HttpServletResponse.SC_OK
 import static org.hamcrest.Matchers.equalTo
-import static org.hamcrest.Matchers.hasItems
 import static org.junit.Assert.assertThat
-import org.junit.AfterClass
-import org.junit.BeforeClass
 
 class RenderingTests extends FunctionalTestCase {
 

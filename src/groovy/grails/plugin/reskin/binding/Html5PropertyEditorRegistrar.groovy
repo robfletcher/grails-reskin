@@ -1,4 +1,4 @@
-package html5.binding
+package grails.plugin.reskin.binding
 
 import java.text.SimpleDateFormat
 import org.springframework.beans.PropertyEditorRegistrar

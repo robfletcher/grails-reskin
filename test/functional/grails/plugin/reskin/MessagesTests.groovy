@@ -1,4 +1,4 @@
-package test
+package grails.plugin.reskin
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement
 import functionaltestplugin.FunctionalTestCase
@@ -8,10 +8,11 @@ import org.hamcrest.TypeSafeMatcher
 import org.junit.AfterClass
 import org.junit.Before
 import org.junit.Test
+import test.Person
+import static grails.plugin.reskin.ClassNameMatcher.hasClassName
 import static javax.servlet.http.HttpServletResponse.SC_OK
 import static org.hamcrest.Matchers.*
 import static org.junit.Assert.assertThat
-import static test.ClassNameMatcher.hasClassName
 
 class MessagesTests extends FunctionalTestCase {
 
@@ -47,8 +48,10 @@ class MessagesTests extends FunctionalTestCase {
 
 	}
 
+	// TODO: all these tests could be merged using spock & @Unroll
+
 	@Test
-	void customFieldsInErrorAreHighlighted() {
+	void passwordFieldsInErrorAreHighlighted() {
 		form {
 			create.click()
 		}

@@ -1,4 +1,4 @@
-package test
+package grails.plugin.reskin
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement
 import functionaltestplugin.FunctionalTestCase

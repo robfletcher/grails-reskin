@@ -2,3 +2,5 @@ devDB.*
 target/
 .idea/
 *.log
+*.zip
+*.xml

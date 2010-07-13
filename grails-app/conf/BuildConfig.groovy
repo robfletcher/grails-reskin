@@ -29,5 +29,9 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.5'
 		test "org.hamcrest:hamcrest-all:1.1"
     }
+	plugins {
+		build ":bean-fields:1.0-RC3"
+		build ":jquery-ui:1.8.2.4"
+	}
 
 }
