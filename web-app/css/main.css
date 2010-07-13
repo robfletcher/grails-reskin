@@ -72,8 +72,7 @@ input:focus, select:focus, textarea:focus {
 	border: 1px solid #b2d1ff;
 }
 
-/* TODO: this selector probably won't work in IE */
-body > section {
+section.list, section.dialog {
 	margin: 0 15px 10px 15px;
 }
 
