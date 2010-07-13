@@ -7,7 +7,7 @@
 <bean:customTemplate>\${label}\${field}<g:if test="\${errors}">\${errors}</g:if></bean:customTemplate>
 <bean:selectTemplate>\${label}\${field}<g:if test="\${errors}">\${errors}</g:if></bean:selectTemplate>
 <bean:labelTemplate><label for="\${fieldId}" class="\${errorClassToUse} \${required}">\${label}</label></bean:labelTemplate>
-<bean:errorTemplate><span class="errorMessage">\${message.encodeAsHTML()}</span></bean:errorTemplate>
+<bean:errorTemplate><aside class="errorMessage">\${message.encodeAsHTML()}</aside></bean:errorTemplate>
 <html>
     <head>
         <meta name="layout" content="main" />

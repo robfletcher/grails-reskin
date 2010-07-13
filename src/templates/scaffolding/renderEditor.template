@@ -53,7 +53,7 @@
 			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else if (cp?.password) {
-			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"password\" name=\"${property.name}\" id=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
+			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:passwordField name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}}\" /></bean:customField>"
 		}
 		else {
 			return "<bean:input beanName=\"${domainInstance}\" property=\"${property.name}\" />"
@@ -89,16 +89,16 @@
 
     private renderNumberEditor(domainClass, property) {
 		if (cp?.range) {
-			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"range\" name=\"${property.name}\" min=\"${cp.range.from}\" max=\"${cp.range.to}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
+			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:field type=\"range\" name=\"${property.name}\" min=\"${cp.range.from}\" max=\"${cp.range.to}\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
 		}
 		else if (cp?.inList) {
 			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else if (property.type == Byte) {
-                return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" name=\"${property.name}\" min=\"-128\" max=\"127\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
+                return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:field type=\"number\" name=\"${property.name}\" min=\"-128\" max=\"127\" value=\"\${fieldValue(bean: ${domainInstance}, field: '${property.name}')}\" /></bean:customField>"
 		}
 		else {
-			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"number\" ")
+			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:field type=\"number\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp?.min != null) sb << "min=\"${cp.min}\" "
 			if (cp?.max != null) sb << "max=\"${cp.max}\" "
@@ -124,7 +124,7 @@
         if (cp && !cp.editable) {
 			return "\${${domainInstance}?.${property.name}?.format('${format}')}"
 		} else {
-			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"${type}\" class=\"${type}\" name=\"${property.name}\" id=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\"/></bean:customField>"
+			return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:field type=\"${type}\" class=\"${type}\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\"/></bean:customField>"
         }
     }
 
@@ -132,7 +132,7 @@
         if (cp && !cp.editable) {
 			return "\${${domainInstance}?.${property.name}?.toString()}"
 		} else {
-            return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"time\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('HH:mm:ss.SSS')}\" /></bean:customField>"
+            return "<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:field type=\"time\" name=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('HH:mm:ss.SSS')}\" /></bean:customField>"
         }
     }
 
@@ -169,7 +169,7 @@
 			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else {
-			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"url\" ")
+			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:field type=\"url\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp?.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
 			if (cp && !cp.editable) sb << "readonly=\"readonly\" "
@@ -183,7 +183,7 @@
 			return "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${domainInstance}.constraints.${property.name}.inList}\" ${renderNoSelection(property)} />"
 		}
 		else {
-			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><input type=\"email\" ")
+			def sb = new StringBuilder("<bean:customField beanName=\"${domainInstance}\" property=\"${property.name}\"><g:field type=\"email\" ")
 			sb << "name=\"${property.name}\" "
 			if (cp?.maxSize) sb << "maxlength=\"${cp.maxSize}\" "
 			if (cp && !cp.editable) sb << "readonly=\"readonly\" "

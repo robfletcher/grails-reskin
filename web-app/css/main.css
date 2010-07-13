@@ -73,7 +73,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 section.list, section.dialog {
-	margin: 0 15px 10px 15px;
+	margin: 0 auto 10px auto;
+	width: 600px;
 }
 
 /* NAVIGATION MENU */
@@ -158,6 +159,17 @@ select.error {
 
 input.error {
 	border: 1px solid red;
+}
+
+fieldset ul li .errorMessage {
+	background: url(../images/skin/exclamation.png) 8px 5px no-repeat #fff3f3;
+	border: 1px solid red;
+	clear: both;
+	color: red;
+	display: block;
+	line-height: 16px;
+	padding: 5px 5px 5px 30px;
+	margin: 5px 0 5px 12em;
 }
 
 /* TABLES */
