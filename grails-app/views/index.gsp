@@ -6,6 +6,9 @@
 		<style type="text/css" media="screen">
 		aside {
 			background: #ccc;
+			background: -moz-linear-gradient(top, #fff, #bbb);
+			background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#bbb));
+			-pie-background: linear-gradient(top, #fff, #bbb);
 			border: 3px solid #999;
 			-webkit-border-radius: 10px;
 			-moz-border-radius: 10px;
