@@ -13,6 +13,7 @@
           <root url="file://$USER_HOME_GRAILS$/1.3.3/projects/grails-reskin/plugins/functional-test-1.2.7/web-app" relative="/" />
           <root url="file://$USER_HOME_GRAILS$/1.3.3/projects/grails-reskin/plugins/jquery-ui-1.8.2.3/web-app" relative="/" />
           <root url="file://$USER_HOME_GRAILS$/1.3.3/projects/grails-reskin/plugins/jquery-ui-1.8.2.4/web-app" relative="/" />
+          <root url="file://$USER_HOME_GRAILS$/1.3.3/projects/grails-reskin/plugins/functional-test-1.2.7/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -50,7 +51,6 @@
           <root url="file://$USER_HOME_GRAILS$/1.3.3/projects/grails-reskin/plugins/tomcat-1.3.3/lib" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.hamcrest/hamcrest-all/jars/hamcrest-all-1.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/xalan/xalan/jars/xalan-2.7.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.spockframework/spock-core/jars/spock-core-0.5-groovy-1.7-SNAPSHOT.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/be.roam.hue/hue/jars/hue-1.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
@@ -65,6 +65,7 @@
           <root url="jar://$USER_HOME$/.ivy2/cache/net.sourceforge.htmlunit/htmlunit/jars/htmlunit-2.7.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/geb/jars/geb-0.2-SNAPSHOT.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/geb-spock/jars/geb-spock-0.1-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.spockframework/spock-core/jars/spock-core-0.5-groovy-1.7-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

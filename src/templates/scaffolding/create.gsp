@@ -28,11 +28,11 @@
 			<g:if test="\${flash.message}">
 			<aside class="message">\${flash.message}</aside>
 			</g:if>
-			<g:hasErrors bean="\${${propertyName}}">
+			<g:hasGlobalErrors bean="\${${propertyName}}">
 			<aside class="errors">
-				<g:renderErrors bean="\${${propertyName}}" as="list" />
+				<g:renderGlobalErrors bean="\${${propertyName}}" />
 			</aside>
-			</g:hasErrors>
+			</g:hasGlobalErrors>
 			<g:form action="save" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
 				<fieldset>
 					<ul>

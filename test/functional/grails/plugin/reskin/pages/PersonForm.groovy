@@ -5,6 +5,7 @@ import org.codehaus.geb.spock.page.Module
 class PersonForm extends Module {
 
 	static content = {
+		nameField { find("input").withName("name") }
 		password { find("input").withName("password") }
 		birthdate { find("input").withName("birthdate") }
 		email { find("input").withName("email") }
