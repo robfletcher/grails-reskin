@@ -46,25 +46,6 @@ class MessagesSpec extends GebSpec {
 		"website"   | "invalid" | "Property [website] of class [class test.Person] with value [invalid] is not a valid URL"
 	}
 
-//	@Test
-//	void selectFieldsInErrorAreHighlighted() {
-//
-//	}
-//
-//	@Test
-//	void errorMessagesAreNotDuplicatedAtTopOfForm() {
-//		form {
-//			create.click()
-//		}
-//
-//		assertThat "name error message", byId("name").nextSibling.textContent, equalTo("Property [name] of class [class test.Person] cannot be blank")
-//		assertThat "form-wide error messages",
-//				byXPath("//section[@class='dialog']/aside[@class='errors']/ul").childElements.collect {
-//					it.textContent
-//				},
-//				not(hasItem("Property [name] of class [class test.Person] cannot be blank"))
-//	}
-
 	def "field errors are not duplicated above the form"() {
 		given: "I am on the create person page"
 		to CreatePersonPage
