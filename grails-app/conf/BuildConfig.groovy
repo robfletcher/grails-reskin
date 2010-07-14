@@ -10,7 +10,9 @@ grails.project.dependency.resolution = {
 		grailsCentral()
 	}
 	dependencies {
-		test "org.hamcrest:hamcrest-all:1.1"
+		test("org.hamcrest:hamcrest-all:1.1") {
+			excludes "junit", "easymock", "jmock"
+		}
 	}
 	plugins {
 		build ":bean-fields:1.0-RC3"
