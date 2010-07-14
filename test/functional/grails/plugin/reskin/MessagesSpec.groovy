@@ -12,8 +12,9 @@ import static grails.plugin.reskin.ClassNameMatcher.hasClassName
 import static javax.servlet.http.HttpServletResponse.SC_OK
 import static org.hamcrest.Matchers.*
 import static org.junit.Assert.assertThat
+import grails.plugin.gebspock.GebSpec
 
-//class MessagesTests extends FunctionalTestCase {
+class MessagesSpec extends GebSpec {
 //
 //	@AfterClass
 //	static void tearDownFixture() {
@@ -109,8 +110,8 @@ import static org.junit.Assert.assertThat
 //				},
 //				not(hasItem("Property [name] of class [class test.Person] cannot be blank"))
 //	}
-//
-//}
+
+}
 
 class ClassNameMatcher extends TypeSafeMatcher<HtmlElement> {
 
