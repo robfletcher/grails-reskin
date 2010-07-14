@@ -80,8 +80,14 @@ section.list, section.dialog {
 /* NAVIGATION MENU */
 
 nav {
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
-	border: 1px solid #ccc;
+	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
+	*background: none;
+	*zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
+	border-width: 1px;
+	border-color: #ccc;
 	border-style: solid none solid none;
 	margin-top: 5px;
 	padding: 7px 12px;
@@ -107,19 +113,19 @@ nav a {
 }
 
 nav a.home {
-	background: url(../images/skin/house.png) center left no-repeat;
+	background: url(/images/skin/house.png) center left no-repeat;
 	color: #333;
 	padding-left: 25px;
 }
 
 nav a.list {
-	background: url(../images/skin/database_table.png) center left no-repeat;
+	background: url(/images/skin/database_table.png) center left no-repeat;
 	color: #333;
 	padding-left: 25px;
 }
 
 nav a.create {
-	background: url(../images/skin/database_add.png) center left no-repeat;
+	background: url(/images/skin/database_add.png) center left no-repeat;
 	color: #333;
 	padding-left: 25px;
 }
@@ -127,7 +133,7 @@ nav a.create {
 /* MESSAGES AND ERRORS */
 
 aside.message {
-	background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
+	background: #f3f8fc url(/images/skin/information.png) 8px 50% no-repeat;
 	border: 1px solid #b2d1ff;
 	color: #006dba;
 	margin: 10px 0 5px 0;
@@ -148,7 +154,7 @@ aside.errors ul {
 }
 
 aside.errors li {
-	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
+	background: url(/images/skin/exclamation.png) 8px 0% no-repeat;
 	line-height: 16px;
 	padding-left: 30px;
 }
@@ -162,7 +168,7 @@ input.error {
 }
 
 fieldset ul li .errorMessage {
-	background: url(../images/skin/exclamation.png) 8px 5px no-repeat #fff3f3;
+	background: url(/images/skin/exclamation.png) 8px 5px no-repeat #fff3f3;
 	border: 1px solid red;
 	clear: both;
 	color: red;
@@ -192,7 +198,12 @@ td, th {
 }
 
 th {
-	background: #fff url(../images/skin/shadow.jpg);
+	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
+	*background: none;
+	*zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	color: #666;
 	font-size: 11px;
 	font-weight: bold;
@@ -214,11 +225,11 @@ th.asc a, th.desc a {
 }
 
 th.asc a {
-	background-image: url(../images/skin/sorted_asc.gif);
+	background-image: url(/images/skin/sorted_asc.gif);
 }
 
 th.desc a {
-	background-image: url(../images/skin/sorted_desc.gif);
+	background-image: url(/images/skin/sorted_desc.gif);
 }
 
 .odd {
@@ -246,7 +257,12 @@ th.desc a {
 /* PAGINATION */
 
 nav.paginateButtons {
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
+	*background: none;
+	*zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	border: 1px solid #ccc;
 	border-top: 0;
 	color: #666;
@@ -336,7 +352,12 @@ nav.paginateButtons span {
 /* ACTION BUTTONS */
 
 fieldset.buttons {
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
+	*background: none;
+	*zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	border: 1px solid #ccc;
 	color: #666;
 	font-size: 10px;
@@ -358,16 +379,16 @@ fieldset.buttons input {
 }
 
 fieldset.buttons input.delete {
-	background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;
+	background: transparent url(/images/skin/database_delete.png) 5px 50% no-repeat;
 	padding-left: 28px;
 }
 
 fieldset.buttons input.edit {
-	background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
+	background: transparent url(/images/skin/database_edit.png) 5px 50% no-repeat;
 	padding-left: 28px;
 }
 
 fieldset.buttons input.save {
-	background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
+	background: transparent url(/images/skin/database_save.png) 5px 50% no-repeat;
 	padding-left: 28px;
 }
