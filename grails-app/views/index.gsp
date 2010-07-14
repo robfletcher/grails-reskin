@@ -6,18 +6,18 @@
 		<style type="text/css" media="screen">
 		aside {
 			background: #ccc;
-			border: 4px solid #999;
+			border: 3px solid #999;
 			-webkit-border-radius: 10px;
 			-moz-border-radius: 10px;
 			border-radius: 10px;
 			margin-top: 20px;
 			margin-left: 30px;
-			width: 190px;
+			width: 192px;
 			float: left;
-			padding: 15px;
-			/* the good old double margin float bug in IE6 */
+			padding: 15px; /* the good old double margin float bug in IE6 */
 			_margin-left: 15px;
-			height: auto;
+			behavior: url(/css/PIE.htc);
+			_padding-top: 0;
 		}
 
 		aside#pluginList {
