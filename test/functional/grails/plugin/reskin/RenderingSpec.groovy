@@ -1,31 +1,32 @@
 package grails.plugin.reskin
 
-import test.Person
-import static test.Gender.*
-import static test.Title.*
 import grails.plugin.gebspock.GebSpec
 import grails.plugin.reskin.pages.ListPersonPage
 import grails.plugin.reskin.pages.ShowPersonPage
+import spock.lang.Shared
+import test.Person
+import static test.Gender.FEMALE
+import static test.Title.MR
 
 class RenderingSpec extends GebSpec {
 
-	Person person1, person2
+	@Shared Person person1, person2
 
-	def setup() {
-		geb.client.javaScriptEnabled = false
-
+	def setupSpec() {
 		Person.withTransaction {
-			person1 = new Person(title: MR, name: "Al Coholic", password: "s3cr37", gender: MALE, birthdate: new Date(71, 10, 29), email: "al@10minutemail.com", website: new URL("http://icanhascheezburger.com/"))
-			person1.save(failOnError: true, flush: true)
-			person2 = new Person(name: "Bea O'Problem", password: "s3cr37", gender: FEMALE, birthdate: new Date(72, 7, 6), email: "bea@10minutemail.com", website: new URL("http://icanhascheezburger.com/"))
-			person2.save(failOnError: true, flush: true)
+			person1 = Person.build(title: MR, name: "Al Coholic")
+			person2 = Person.build(name: "Bea O'Problem", gender: FEMALE)
 		}
 	}
 
-	def cleanup() {
+	def cleanupSpec() {
 		Person.withTransaction {
 			Person.list()*.delete()
 		}
+	}
+
+	def setup() {
+		geb.client.javaScriptEnabled = false
 	}
 
 	def getBaseUrl() {

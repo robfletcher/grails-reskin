@@ -18,10 +18,8 @@ class InputTypeSpec extends GebSpec {
 
 	def setupSpec() {
 		Person.withTransaction {
-			person1 = new Person(name: "Al Coholic", password: "s3cr37", gender: MALE, birthdate: new Date(71, 10, 29), email: "al@10minutemail.com", website: new URL("http://icanhascheezburger.com/"))
-			person1.save(failOnError: true, flush: true)
-			person2 = new Person(name: "Bea O'Problem", password: "s3cr37", gender: FEMALE, birthdate: new Date(72, 7, 6), email: "bea@10minutemail.com", website: new URL("http://icanhascheezburger.com/"))
-			person2.save(failOnError: true, flush: true)
+			person1 = Person.build(name: "Al Coholic", gender: MALE)
+			person2 = Person.build(name: "Bea O'Problem", gender: FEMALE)
 		}
 	}
 

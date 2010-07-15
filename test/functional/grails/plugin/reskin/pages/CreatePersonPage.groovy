@@ -15,7 +15,7 @@ class CreatePersonPage extends Page {
 		flashMessage(required: false) { find("aside.message") }
 		errorMessages(required: false) { find("aside.errors ul li") }
 		form { module PersonForm, find("form") }
-		createButton(toPage: CreatePersonPage) { find("input").withName("create") }
+		createButton(toPage: ShowPersonPage) { find("input").withName("create") }
 	}
 
 }

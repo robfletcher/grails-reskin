@@ -28,7 +28,7 @@ class MessagesSpec extends GebSpec {
 
 		when: "I submit the form with an invalid value"
 		form."$property".value(value)
-		form.createButton.click()
+		form.createButton.click CreatePersonPage
 
 		then: "the create form is re-displayed"
 		at CreatePersonPage
@@ -52,7 +52,7 @@ class MessagesSpec extends GebSpec {
 
 		when: "I submit the form with an invalid value"
 		form.nameField.value("")
-		form.createButton.click()
+		form.createButton.click(CreatePersonPage)
 
 		then: "the create form is re-displayed"
 		at CreatePersonPage

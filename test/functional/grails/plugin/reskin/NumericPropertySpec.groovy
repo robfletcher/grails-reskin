@@ -39,7 +39,10 @@ class NumericPropertySpec extends GebSpec {
 		to CreateNumericPage
 
 		then:
-		form.intInList.get("option")*.attribute("value") == ["2", "4", "6", "8", "10"]
+		form.intInList.get("option")*.attribute("value") == expectedOptions
+
+		where:
+		expectedOptions = ["2", "4", "6", "8", "10"]
 	}
 
 }
