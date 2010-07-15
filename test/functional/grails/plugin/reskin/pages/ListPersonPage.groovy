@@ -1,6 +1,6 @@
 package grails.plugin.reskin.pages
 
-import org.codehaus.geb.spock.page.Page
+import geb.Page
 
 class ListPersonPage extends Page {
 

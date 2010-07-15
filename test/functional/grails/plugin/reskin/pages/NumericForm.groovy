@@ -1,6 +1,6 @@
 package grails.plugin.reskin.pages
 
-import org.codehaus.geb.spock.page.Module
+import geb.Module
 
 class NumericForm extends Module {
 
