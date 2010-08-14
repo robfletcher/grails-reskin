@@ -11,11 +11,11 @@ class CreatePersonPage extends Page {
 	}
 
 	static content = {
-		heading { find("header h1") }
-		flashMessage(required: false) { find("aside.message") }
-		errorMessages(required: false) { find("aside.errors ul li") }
-		form { module PersonForm, find("form") }
-		createButton(toPage: ShowPersonPage) { find("input").withName("create") }
+		heading { $("header h1") }
+		flashMessage(required: false) { $("aside.message") }
+		errorMessages(required: false) { $("aside.errors ul li") }
+		form { $("form") }
+		createButton(toPage: ShowPersonPage) { form.create() }
 	}
 
 }

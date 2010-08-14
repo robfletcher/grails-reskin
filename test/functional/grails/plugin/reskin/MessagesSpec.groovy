@@ -1,9 +1,9 @@
 package grails.plugin.reskin
 
-import grails.plugin.gebspock.GebSpec
 import grails.plugin.reskin.pages.CreatePersonPage
-import spock.lang.Unroll
+import spock.lang.*
 import test.Person
+import grails.plugin.geb.GebSpec
 
 class MessagesSpec extends GebSpec {
 
@@ -14,10 +14,10 @@ class MessagesSpec extends GebSpec {
 	}
 
 	def setup() {
-		geb.client.javaScriptEnabled = false
+//		geb.client.javaScriptEnabled = false
 	}
 
-	def getBaseUrl() {
+	String getBaseUrl() {
 		"http://localhost:8080/"
 	}
 
@@ -27,19 +27,19 @@ class MessagesSpec extends GebSpec {
 		to CreatePersonPage
 
 		when: "I submit the form with an invalid value"
-		form."$property".value(value)
-		form.createButton.click CreatePersonPage
+		form."$property" = value
+		createButton.click CreatePersonPage
 
 		then: "the create form is re-displayed"
 		at CreatePersonPage
 
 		and: "the field is marked with an error"
-		form."$property".classValue() =~ /\berror\b/
-		form."$property".next("aside").text() == errorMessage
+		form."$property"().hasClass("error")
+		form."$property"().next("aside").text() == errorMessage
 
 		where:
 		property    | value     | errorMessage
-		"nameField" | ""        | "Property [name] of class [class test.Person] cannot be blank"
+		"name"      | ""        | "Property [name] of class [class test.Person] cannot be blank"
 		"password"  | ""        | "Property [password] of class [class test.Person] cannot be blank"
 		"birthdate" | "invalid" | "Property birthdate must be a valid Date"
 		"email"     | "invalid" | "Property [email] of class [class test.Person] with value [invalid] is not a valid e-mail address"
@@ -51,14 +51,14 @@ class MessagesSpec extends GebSpec {
 		to CreatePersonPage
 
 		when: "I submit the form with an invalid value"
-		form.nameField.value("")
-		form.createButton.click(CreatePersonPage)
+		form.name = ""
+		createButton.click(CreatePersonPage)
 
 		then: "the create form is re-displayed"
 		at CreatePersonPage
 
 		and: "the field is marked with an error"
-		form.nameField.next("aside").text() == errorMessage
+		form.name().next("aside").text() == errorMessage
 		!(errorMessage in errorMessages*.text())
 
 		where:

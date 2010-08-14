@@ -13,6 +13,9 @@ grails.project.dependency.resolution = {
 		test("org.hamcrest:hamcrest-all:1.1") {
 			excludes "junit", "easymock", "jmock"
 		}
+		test("org.seleniumhq.selenium:selenium-htmlunit-driver:2.0a5") {
+			excludes "xml-apis"
+		}
 	}
 	plugins {
 		build ":bean-fields:1.0-RC3"

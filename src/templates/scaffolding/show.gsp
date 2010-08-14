@@ -3,7 +3,7 @@
 <%=packageName%>
 <html>
     <head>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="main">
         <g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>

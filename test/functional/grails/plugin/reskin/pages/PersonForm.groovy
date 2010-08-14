@@ -5,14 +5,14 @@ import geb.Module
 class PersonForm extends Module {
 
 	static content = {
-		nameField { find("input").withName("name") }
-		password { find("input").withName("password") }
-		birthdate { find("input").withName("birthdate") }
-		email { find("input").withName("email") }
-		website { find("input").withName("website") }
-		gender { find("select").withName("gender") }
-		title { find("select").withName("title") }
-		spouse { find("select").withName("spouse.id") }
+		nameField { $("input", name: "name") }
+		password { $("input", name: "password") }
+		birthdate { $("input", name: "birthdate") }
+		email { $("input", name: "email") }
+		website { $("input", name: "website") }
+		gender { $("select", name: "gender") }
+		title { $("select", name: "title") }
+		spouse { $("select", name: "spouse.id") }
 	}
 
 }

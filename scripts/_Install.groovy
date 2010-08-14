@@ -11,6 +11,11 @@ scaffoldingSourceDir.eachFile { File sourceFile ->
 }
 
 boolean userChoosesToOverwrite(File file) {
-	ant.input message: "Overwrite $file.name? [y/n]", addProperty: "overwrite.$file.name"
+	if (ant.antProject.properties."overwrite.all" == "true") return true
+	ant.input message: "Overwrite $file.name? [y/n/a]", addProperty: "overwrite.$file.name"
+	if ("a".equalsIgnoreCase(ant.antProject.properties."overwrite.$file.name")) {
+		ant.property name: "overwrite.all", value: "true"
+		return true
+	}
 	"y".equalsIgnoreCase(ant.antProject.properties."overwrite.$file.name")
 }

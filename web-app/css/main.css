@@ -1,9 +1,6 @@
-* {
-	text-rendering: optimizeLegibility;
-}
-
 html * {
 	margin: 0; /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
+	text-rendering: optimizeLegibility;
 }
 
 /* GENERAL */

@@ -61,9 +61,7 @@ class InstallationTests extends AbstractCliTestCase {
 
 		workDir = appBaseDir
 		execute(["install-plugin", packagedPlugin.absolutePath])
-		assertThat "user prompt", output, containsString("Overwrite create.gsp? [y/n]")
 		enterInput "y"
-		assertThat "user prompt", output, containsString("Overwrite edit.gsp? [y/n]")
 		enterInput "n"
 		waitForProcessSuccess "install-plugin", packagedPlugin.absolutePath
 		verifyHeader()

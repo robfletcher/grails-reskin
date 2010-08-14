@@ -1,19 +1,19 @@
 package grails.plugin.reskin
 
-import grails.plugin.gebspock.GebSpec
 import grails.plugin.reskin.pages.EditPersonPage
-import spock.lang.Unroll
+import spock.lang.*
 import test.Person
 import static test.Gender.FEMALE
 import static test.Gender.MALE
 import spock.lang.Shared
+import grails.plugin.geb.GebSpec
 
 class InputTypeSpec extends GebSpec {
 
 	@Shared Person person1, person2
 
 	def setup() {
-		geb.client.javaScriptEnabled = false
+//		geb.client.javaScriptEnabled = false
 	}
 
 	def setupSpec() {
@@ -29,20 +29,20 @@ class InputTypeSpec extends GebSpec {
 		}
 	}
 
-	def getBaseUrl() {
+	String getBaseUrl() {
 		"http://localhost:8080/"
 	}
 
 	@Unroll("the #property property is rendered as a #inputType input")
 	def "input types"() {
 		when: "I am on the edit page"
-		to EditPersonPage, "$person1.id"
+		to EditPersonPage, person1.id
 
 		then: "the correct input type is used"
-		form."$property".attribute("type") == inputType
+		form."$property"().@type == inputType
 
 		and: "the initial value is correct"
-		form."$property".value() == value
+		form."$property" == value
 
 		where:
 		property    | inputType  | value
@@ -58,14 +58,14 @@ class InputTypeSpec extends GebSpec {
 		to EditPersonPage, "$person1.id"
 
 		then: "selects are rendered correctly"
-		form."$property".get("option")*.attribute("value") == options
-		form."$property".get("option")*.text() == labels
-		form."$property".value() == selected
+		form."$property"().find("option")*.@value == options
+		form."$property"().find("option")*.text() == labels
+		form."$property" == selected
 
 		where:
-		property | options                                | labels                           | selected
-		"gender" | ["MALE", "FEMALE"]                     | ["Male", "Female"]               | "MALE"
-		"title"  | ["", "MR", "MRS", "MS", "DR"]          | ["", "Mr", "Mrs", "Ms", "Dr"]    | null
-		"spouse" | ["null", "$person1.id", "$person2.id"] | ["", person1.name, person2.name] | null
+		property    | options                                | labels                           | selected
+		"gender"    | ["MALE", "FEMALE"]                     | ["Male", "Female"]               | "MALE"
+		"title"     | ["", "MR", "MRS", "MS", "DR"]          | ["", "Mr", "Mrs", "Ms", "Dr"]    | null
+		"spouse.id" | ["null", "$person1.id", "$person2.id"] | ["", person1.name, person2.name] | "null"
 	}
 }

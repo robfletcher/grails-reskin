@@ -37,28 +37,31 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="grails-1.3.4" level="application" />
     <orderEntry type="library" name="grails-1.3.3" level="application" />
     <orderEntry type="module-library">
       <library name="Grails User Library">
         <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.hamcrest/hamcrest-all/jars/hamcrest-all-1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xalan/xalan/jars/xalan-2.7.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/be.roam.hue/hue/jars/hue-1.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/net.sourceforge.cssparser/cssparser/jars/cssparser-0.9.5.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/net.sourceforge.nekohtml/nekohtml/jars/nekohtml-1.9.14.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.9.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/net.sourceforge.htmlunit/htmlunit-core-js/jars/htmlunit-core-js-2.7.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-codec/commons-codec/javadocs/commons-codec-1.4-javadoc.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.4.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-codec/commons-codec/sources/commons-codec-1.4-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/commons-httpclient/commons-httpclient/jars/commons-httpclient-3.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/net.sourceforge.htmlunit/htmlunit/jars/htmlunit-2.7.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.spockframework/spock-core/jars/spock-core-0.5-groovy-1.7-SNAPSHOT.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/geb/jars/geb-0.3-SNAPSHOT.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/geb-spock/jars/geb-spock-0.3-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/xalan/xalan/jars/xalan-2.7.1.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.seleniumhq.selenium/selenium-common/jars/selenium-common-2.0a5.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.seleniumhq.selenium/selenium-htmlunit-driver/jars/selenium-htmlunit-driver-2.0a5.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/spock/jars/spock-0.4-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/junit3/jars/junit3-0.4-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/core/jars/core-0.4-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/junit4/jars/junit4-0.4-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.geb/grails-support/jars/grails-support-0.4-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

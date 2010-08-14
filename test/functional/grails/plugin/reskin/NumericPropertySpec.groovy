@@ -1,16 +1,16 @@
 package grails.plugin.reskin
 
-import grails.plugin.gebspock.GebSpec
 import grails.plugin.reskin.pages.CreateNumericPage
-import spock.lang.Unroll
+import spock.lang.*
+import grails.plugin.geb.GebSpec
 
 class NumericPropertySpec extends GebSpec {
 
 	def setup() {
-		geb.client.javaScriptEnabled = false
+//		geb.client.javaScriptEnabled = false
 	}
 
-	def getBaseUrl() {
+	String getBaseUrl() {
 		"http://localhost:8080/"
 	}
 
@@ -20,9 +20,9 @@ class NumericPropertySpec extends GebSpec {
 		to CreateNumericPage
 
 		then:
-		form."$property".attribute("type") == inputType
-		form."$property".attribute("min") == min
-		form."$property".attribute("max") == max
+		form."$property"().@type == inputType
+		form."$property"().@min == min
+		form."$property"().@max == max
 
 		where:
 		property           | inputType | min               | max
@@ -39,7 +39,7 @@ class NumericPropertySpec extends GebSpec {
 		to CreateNumericPage
 
 		then:
-		form.intInList.get("option")*.attribute("value") == expectedOptions
+		form.intInList().find("option")*.@value == expectedOptions
 
 		where:
 		expectedOptions = ["2", "4", "6", "8", "10"]
