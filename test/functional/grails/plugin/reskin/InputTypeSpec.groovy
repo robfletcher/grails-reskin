@@ -12,10 +12,6 @@ class InputTypeSpec extends GebSpec {
 
 	@Shared Person person1, person2
 
-	def setup() {
-//		geb.client.javaScriptEnabled = false
-	}
-
 	def setupSpec() {
 		Person.withTransaction {
 			person1 = Person.build(name: "Al Coholic", gender: MALE)

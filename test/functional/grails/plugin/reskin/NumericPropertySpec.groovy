@@ -6,10 +6,6 @@ import grails.plugin.geb.GebSpec
 
 class NumericPropertySpec extends GebSpec {
 
-	def setup() {
-//		geb.client.javaScriptEnabled = false
-	}
-
 	String getBaseUrl() {
 		"http://localhost:8080/"
 	}

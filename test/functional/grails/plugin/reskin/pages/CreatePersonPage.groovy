@@ -14,7 +14,7 @@ class CreatePersonPage extends Page {
 		heading { $("header h1") }
 		flashMessage(required: false) { $("aside.message") }
 		errorMessages(required: false) { $("aside.errors ul li") }
-		form { $("form") }
+		form(dynamic: true) { $("form") }
 		createButton(toPage: ShowPersonPage) { form.create() }
 	}
 

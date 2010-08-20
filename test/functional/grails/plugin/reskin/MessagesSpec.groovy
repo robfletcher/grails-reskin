@@ -4,6 +4,7 @@ import grails.plugin.reskin.pages.CreatePersonPage
 import spock.lang.*
 import test.Person
 import grails.plugin.geb.GebSpec
+import org.openqa.selenium.By
 
 class MessagesSpec extends GebSpec {
 
@@ -11,10 +12,6 @@ class MessagesSpec extends GebSpec {
 		Person.withTransaction {
 			Person.list()*.delete()
 		}
-	}
-
-	def setup() {
-//		geb.client.javaScriptEnabled = false
 	}
 
 	String getBaseUrl() {
@@ -25,15 +22,19 @@ class MessagesSpec extends GebSpec {
 	def "text field errors"() {
 		given: "I am on the create person page"
 		to CreatePersonPage
+		def element = browser.driver.findElement(By.name(property))
 
 		when: "I submit the form with an invalid value"
 		form."$property" = value
 		createButton.click CreatePersonPage
+		def element2 = browser.driver.findElement(By.name(property))
 
 		then: "the create form is re-displayed"
 		at CreatePersonPage
 
 		and: "the field is marked with an error"
+		"error" in $("#$property").classes()
+		"error" in form."$property"().classes()
 		form."$property"().hasClass("error")
 		form."$property"().next("aside").text() == errorMessage
 
@@ -43,7 +44,7 @@ class MessagesSpec extends GebSpec {
 		"password"  | ""        | "Property [password] of class [class test.Person] cannot be blank"
 		"birthdate" | "invalid" | "Property birthdate must be a valid Date"
 		"email"     | "invalid" | "Property [email] of class [class test.Person] with value [invalid] is not a valid e-mail address"
-		"website"   | "invalid" | "Property [website] of class [class test.Person] with value [invalid] is not a valid URL"
+		"website"   | "invalid" | "Property website must be a valid URL"
 	}
 
 	def "field errors are not duplicated above the form"() {

@@ -25,10 +25,6 @@ class RenderingSpec extends GebSpec {
 		}
 	}
 
-	def setup() {
-//		geb.client.javaScriptEnabled = false
-	}
-
 	String getBaseUrl() {
 		"http://localhost:8080/"
 	}
