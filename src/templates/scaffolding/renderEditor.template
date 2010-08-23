@@ -5,9 +5,9 @@
     else if (property.type in [String, URL])
         out << renderStringEditor(domainClass, property)
 	else if (property.type in [Date, java.sql.Date, Calendar])
-		out << renderDateEditor(domainClass, property)
+		out << renderDateTimeEditor(domainClass, property, "date", "yyyy-MM-dd")
 	else if (property.type in java.sql.Time)
-		out << renderTimeEditor(domainClass, property)
+		out << renderDateTimeEditor(domainClass, property, "time", "HH:mm")
     else if (property.isEnum())
         out << renderEnumEditor(domainClass, property)
     else if (property.type in TimeZone)
@@ -115,21 +115,11 @@
 		return sb.toString()
     }
 
-    private renderDateEditor(domainClass, property) {
-        def type = property.type in [Date, java.sql.Date, Calendar] ? "date" : "datetime"
-        def format = type == "date" ? "yyyy-MM-dd" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    private renderDateTimeEditor(domainClass, property, type, pattern) {
         if (cp && !cp.editable) {
-			return "\${${domainInstance}?.${property.name}?.format('${format}')}"
+			return "\${${domainInstance}?.${property.name}?.format('${pattern}')}"
 		} else {
-			return "<bean:input type=\"${type}\" beanName=\"${domainInstance}\" property=\"${property.name}\" class=\"${type}\" value=\"\${${domainInstance}?.${property.name}?.format('${format}')}\" />"
-        }
-    }
-
-    private renderTimeEditor(domainClass, property) {
-        if (cp && !cp.editable) {
-			return "\${${domainInstance}?.${property.name}?.toString()}"
-		} else {
-            return "<bean:input type=\"time\" beanName=\"${domainInstance}\" property=\"${property.name}\" value=\"\${${domainInstance}?.${property.name}?.format('HH:mm:ss.SSS')}\" />"
+			return "<bean:input type=\"${type}\" beanName=\"${domainInstance}\" property=\"${property.name}\" class=\"${type}\" value=\"\${${domainInstance}?.${property.name}?.format('${pattern}')}\" />"
         }
     }
 
