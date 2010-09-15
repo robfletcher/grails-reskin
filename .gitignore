@@ -1,6 +1,7 @@
 devDB.*
 target/
 .idea/
+*.iml
 *.log
 *.zip
 *.xml
