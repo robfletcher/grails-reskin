@@ -1,6 +1,5 @@
 html * {
-	margin: 0; /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
-	text-rendering: optimizeLegibility;
+	margin: 0;
 }
 
 /* GENERAL */
@@ -11,35 +10,14 @@ html * {
 	right: 0;
 }
 
-header, nav, article, section, aside {
-	display: block;
-}
-
-img {
-	border: 0;
-}
-
-body {
-	background: #fff;
-	color: #333;
-	font: 11px verdana, arial, helvetica, sans-serif;
-}
-
 a#grailsLogo {
 	display: inline-block;
 	padding: 20px;
 }
 
-a:link, a:visited, a:hover {
-	color: #666;
-	font-weight: bold;
-	text-decoration: none;
-}
-
 h1 {
 	color: #48802c;
 	font-weight: normal;
-	font-size: 16px;
 	margin: .8em 0 .3em 0;
 }
 
@@ -50,9 +28,12 @@ ul {
 input, select, textarea {
 	background-color: #fcfcfc;
 	border: 1px solid #ccc;
-	font: 11px verdana, arial, helvetica, sans-serif;
-	margin: 2px 0;
+	font: 16px verdana, sans-serif;
 	padding: 2px 4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/css/PIE.htc);
 }
 
 select {
@@ -69,9 +50,16 @@ input:focus, select:focus, textarea:focus {
 	border: 1px solid #b2d1ff;
 }
 
+/* LAYOUT */
+
+#container {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
 section.list, section.dialog {
 	margin: 0 auto 10px auto;
-	width: 600px;
+	padding: 0 20px;
 }
 
 /* NAVIGATION MENU */
@@ -83,22 +71,21 @@ nav {
 	*zoom: 1;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-	border-width: 1px;
-	border-color: #ccc;
-	border-style: solid none solid none;
-	margin-top: 5px;
+	border: 1px solid #ccc;
 	padding: 7px 12px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/css/PIE.htc);
 }
 
 nav ul {
-	list-style-type: none;
 	padding: 0;
 	*zoom: 1;
 }
 
 nav ul li {
 	display: inline-block;
-	font-size: 10px;
 	padding: 0 5px;
 	*float: left;
 }
@@ -106,7 +93,9 @@ nav ul li {
 nav a {
 	color: #333;
 	display: inline-block;
+	font-weight: bold;
 	padding: 4px 6px;
+	text-decoration: none;
 }
 
 nav a.home {
@@ -156,23 +145,15 @@ aside.errors li {
 	padding-left: 30px;
 }
 
-select.error {
-	border: 1px solid red;
-}
-
-input.error {
-	border: 1px solid red;
+select.error, input.error {
+	border: 1px solid #f44;
 }
 
 fieldset ul li .errorMessage {
-	background: url(/images/skin/exclamation.png) 8px 5px no-repeat #fff3f3;
-	border: 1px solid red;
+	background: url(/images/skin/exclamation.png) 8px 5px no-repeat transparent;
 	clear: both;
 	color: red;
-	display: block;
-	line-height: 16px;
 	padding: 5px 5px 5px 30px;
-	margin: 5px 0 5px 12em;
 }
 
 /* TABLES */
@@ -187,9 +168,8 @@ tr {
 }
 
 td, th {
-	font: 11px verdana, arial, helvetica, sans-serif;
 	line-height: 12px;
-	padding: 5px 6px;
+	padding: 10px;
 	text-align: left;
 	vertical-align: top;
 }
@@ -201,18 +181,12 @@ th {
 	*zoom: 1;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-	color: #666;
-	font-size: 11px;
-	font-weight: bold;
-	line-height: 17px;
-	padding: 2px 6px;
+	line-height: 18px;
 }
 
 th a:link, th a:visited, th a:hover {
 	color: #333;
 	display: block;
-	font-size: 10px;
-	text-decoration: none;
 	width: 100%;
 }
 
@@ -239,10 +213,6 @@ th.desc a {
 
 /* LIST */
 
-.list table {
-	border-collapse: collapse;
-}
-
 .list th, .list td {
 	border-left: 1px solid #ddd;
 }
@@ -254,31 +224,24 @@ th.desc a {
 /* PAGINATION */
 
 nav.paginateButtons {
-	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
-	*background: none;
-	*zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	border: 1px solid #ccc;
 	border-top: 0;
-	color: #666;
 	font-size: 10px;
 	overflow: hidden;
-	margin: 0;
-	padding: 10px 3px;
+	text-align: center;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+	behavior: url(/css/PIE.htc);
 }
 
 nav.paginateButtons a {
-	background: #fff;
-	border: 1px solid #ccc;
-	border-color: #ccc #aaa #aaa #ccc;
-	color: #666;
 	margin: 0 3px;
 	padding: 2px 6px;
 }
 
-nav.paginateButtons span {
+nav.paginateButtons .currentStep {
+	color: #aaa;
 	padding: 2px 3px;
 }
 
@@ -286,12 +249,15 @@ nav.paginateButtons span {
 
 .dialog fieldset {
 	border: 1px solid #ccc;
-	padding: 5px 2px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/css/PIE.htc);
 }
 
 .dialog fieldset ul {
 	list-style-type: none;
-	padding: 0;
+	padding: 20px;
 }
 
 .dialog fieldset ul li {
@@ -299,51 +265,40 @@ nav.paginateButtons span {
 }
 
 .dialog fieldset ul li label {
-	display: inline-block;
-	width: 12em; /* TODO: hmm */
+	color: #888;
+	display: block;
+	margin-left: 7px; /* lines up with input content which have border radius 5px, padding-left 2px */
 	white-space: nowrap;
 }
 
-.dialog fieldset ul li label:after {
-	content: ' :';
-}
-
 .dialog fieldset ul li label.required {
+	color: #444;
 	font-weight: bold;
-}
-
-.dialog fieldset ul li label.required:after {
-	color: #f00;
-	content: ' *';
-	vertical-align: middle;
 }
 
 .dialog dl {
 	border: 1px solid #ccc;
-	padding: 5px 2px;
+	padding: 20px;
 	_zoom: 1;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/css/PIE.htc);
 }
 
 .dialog dl dt,
 .dialog dl dd {
-	padding: 5px 6px;	
+	padding: 0;	
 }
 
 .dialog dl dt {
-	clear: left;
-	float: left;
-	width: 12em; /* TODO: hmm */
+	color: #888;
 	white-space: nowrap;
 }
 
-.dialog dl dt:after {
-	content: ' :';
-}
-
 .dialog dl dd {
-	margin-left: 12em;
-	min-height: 15px; /* TODO: hmm */
-	_height: 15px;
+	font: 16px verdana, sans-serif;
+	margin-bottom: 10px;
 }
 
 /* ACTION BUTTONS */
@@ -357,19 +312,14 @@ fieldset.buttons {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	border: 1px solid #ccc;
 	color: #666;
-	font-size: 10px;
 	margin-top: 5px;
 	overflow: hidden;
-	padding: 0;
+	padding: 5px 2px;
 }
 
 fieldset.buttons input {
-	background: #fff;
 	border: 0;
-	color: #333;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+	font: bold 13px sans-serif;
 	margin-left: 3px;
 	overflow: visible;
 	padding: 2px 6px;

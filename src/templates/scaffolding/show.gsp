@@ -29,11 +29,11 @@
 					props.each { p -> %>
 					<dt><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></dt>
 					<%  if (org.springframework.context.MessageSourceResolvable.isAssignableFrom(p.type)) { %>
-					<dd id="${p.name}"><g:message message="\${${propertyName}?.${p.name}}"/></dd>
+					<dd><g:message message="\${${propertyName}?.${p.name}}"/></dd>
 					<%  } else if (p.isEnum()) { %>
-					<dd id="${p.name}">\${${propertyName}?.${p.name}?.encodeAsHTML()}</dd>
+					<dd>\${${propertyName}?.${p.name}?.encodeAsHTML()}</dd>
 					<%  } else if (p.oneToMany || p.manyToMany) { %>
-					<dd id="${p.name}" style="text-align: left;">
+					<dd style="text-align: left;">
 						<ul>
 						<g:each in="\${${propertyName}.${p.name}}" var="${p.name[0]}">
 							<li><g:link controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${p.name[0]}.id}">\${${p.name[0]}?.encodeAsHTML()}</g:link></li>
@@ -41,13 +41,13 @@
 						</ul>
 					</dd>
 					<%  } else if (p.manyToOne || p.oneToOne) { %>
-					<dd id="${p.name}"><g:link controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${propertyName}?.${p.name}?.id}">\${${propertyName}?.${p.name}?.encodeAsHTML()}</g:link></dd>
+					<dd><g:link controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${propertyName}?.${p.name}?.id}">\${${propertyName}?.${p.name}?.encodeAsHTML()}</g:link></dd>
 					<%  } else if (p.type == Boolean.class || p.type == boolean.class) { %>
-					<dd id="${p.name}"><g:formatBoolean boolean="\${${propertyName}?.${p.name}}" /></dd>
+					<dd><g:formatBoolean boolean="\${${propertyName}?.${p.name}}" /></dd>
 					<%  } else if (p.type == Date.class || p.type == java.sql.Date.class || p.type == java.sql.Time.class || p.type == Calendar.class) { %>
-					<dd id="${p.name}"><g:formatDate date="\${${propertyName}?.${p.name}}" /></dd>
+					<dd><g:formatDate date="\${${propertyName}?.${p.name}}" /></dd>
 					<%  } else { %>
-					<dd id="${p.name}">\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</dd>
+					<dd>\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</dd>
 					<%  } %>
 				<%  } %>
 			</dl>

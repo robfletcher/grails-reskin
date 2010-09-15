@@ -28,12 +28,17 @@
         out << renderOneToMany(domainClass, property)
 
     private renderEnumEditor(domainClass, property) {
-    	def sb = new StringBuilder("<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${property.type.name}?.values()}\" ")
-    	// TODO: this doesn't actually use the MessageSourceResolvable interface properly
-        if (org.springframework.context.MessageSourceResolvable.isAssignableFrom(property.type)) {
-        	sb << "valueMessagePrefix=\"${property.type.name}\" "
-        }
-        sb << "${renderNoSelection(property)} />"
+		def sb = new StringBuilder()
+		if (property.type.values().size() > 3) {
+	    	sb << "<bean:select beanName=\"${domainInstance}\" property=\"${property.name}\" from=\"\${${property.type.name}?.values()}\" "
+	    	// TODO: this doesn't actually use the MessageSourceResolvable interface properly
+	        if (org.springframework.context.MessageSourceResolvable.isAssignableFrom(property.type)) {
+	        	sb << "valueMessagePrefix=\"${property.type.name}\" "
+	        }
+	        sb << "${renderNoSelection(property)} />"
+		} else {
+			sb << "<bean:radioGroup beanName=\"${domainInstance}\" property=\"${property.name}\" />"
+		}
         return sb.toString()
     }
 

@@ -4,7 +4,7 @@ class BootStrap {
 
 	def init = { servletContext ->
 		JavascriptTagLib.LIBRARY_MAPPINGS.modernizr = ["modernizr/modernizr-1.5.min"]
-		JavascriptTagLib.LIBRARY_MAPPINGS."html5-support" = ["html5-support"]
+		JavascriptTagLib.LIBRARY_MAPPINGS.belatedpng = ["belatedpng/dd_belatedpng"]
 	}
 
 	def destroy = {
