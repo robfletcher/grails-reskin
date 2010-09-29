@@ -17,8 +17,9 @@ a#grailsLogo {
 
 h1 {
 	color: #48802c;
+	font-size: 16px;
 	font-weight: normal;
-	margin: .8em 0 .3em 0;
+	margin: 10px 0 3px 0;
 }
 
 ul {
@@ -46,8 +47,12 @@ textarea {
 	vertical-align: top;
 }
 
+input, select, textarea {
+	outline: none;
+}
 input:focus, select:focus, textarea:focus {
 	border: 1px solid #b2d1ff;
+	outline: none;
 }
 
 /* LAYOUT */
@@ -247,7 +252,7 @@ nav.paginateButtons .currentStep {
 
 /* DIALOG */
 
-.dialog fieldset {
+fieldset {
 	border: 1px solid #ccc;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -255,30 +260,30 @@ nav.paginateButtons .currentStep {
 	behavior: url(/css/PIE.htc);
 }
 
-.dialog fieldset ul {
+fieldset ul {
 	list-style-type: none;
 	padding: 20px;
 }
 
-.dialog fieldset ul li {
-	padding: 5px 6px;
+fieldset ul li {
+	margin-bottom: 10px;
 }
 
-.dialog fieldset ul li label {
+fieldset ul li label {
 	color: #888;
 	display: block;
 	margin-left: 7px; /* lines up with input content which have border radius 5px, padding-left 2px */
 	white-space: nowrap;
 }
 
-.dialog fieldset ul li label.required {
+fieldset ul li label.required {
 	color: #444;
 	font-weight: bold;
 }
 
-.dialog dl {
+dl {
 	border: 1px solid #ccc;
-	padding: 20px;
+	padding: 20px 20px 10px 20px;
 	_zoom: 1;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -286,17 +291,17 @@ nav.paginateButtons .currentStep {
 	behavior: url(/css/PIE.htc);
 }
 
-.dialog dl dt,
-.dialog dl dd {
+dl dt,
+dl dd {
 	padding: 0;	
 }
 
-.dialog dl dt {
+dl dt {
 	color: #888;
 	white-space: nowrap;
 }
 
-.dialog dl dd {
+dl dd {
 	font: 16px verdana, sans-serif;
 	margin-bottom: 10px;
 }

@@ -27,28 +27,30 @@
 					props = domainClass.properties.findAll { !excludedProps.contains(it.name) }
 					Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
 					props.each { p -> %>
-					<dt><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></dt>
-					<%  if (org.springframework.context.MessageSourceResolvable.isAssignableFrom(p.type)) { %>
-					<dd><g:message message="\${${propertyName}?.${p.name}}"/></dd>
-					<%  } else if (p.isEnum()) { %>
-					<dd>\${${propertyName}?.${p.name}?.encodeAsHTML()}</dd>
-					<%  } else if (p.oneToMany || p.manyToMany) { %>
-					<dd style="text-align: left;">
-						<ul>
-						<g:each in="\${${propertyName}.${p.name}}" var="${p.name[0]}">
-							<li><g:link controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${p.name[0]}.id}">\${${p.name[0]}?.encodeAsHTML()}</g:link></li>
-						</g:each>
-						</ul>
-					</dd>
-					<%  } else if (p.manyToOne || p.oneToOne) { %>
-					<dd><g:link controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${propertyName}?.${p.name}?.id}">\${${propertyName}?.${p.name}?.encodeAsHTML()}</g:link></dd>
-					<%  } else if (p.type == Boolean.class || p.type == boolean.class) { %>
-					<dd><g:formatBoolean boolean="\${${propertyName}?.${p.name}}" /></dd>
-					<%  } else if (p.type == Date.class || p.type == java.sql.Date.class || p.type == java.sql.Time.class || p.type == Calendar.class) { %>
-					<dd><g:formatDate date="\${${propertyName}?.${p.name}}" /></dd>
-					<%  } else { %>
-					<dd>\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</dd>
-					<%  } %>
+					<g:if test="\${fieldValue(bean: ${propertyName}, field: '${p.name}')}">
+						<dt><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></dt>
+						<%  if (org.springframework.context.MessageSourceResolvable.isAssignableFrom(p.type)) { %>
+						<dd><g:message message="\${${propertyName}?.${p.name}}"/></dd>
+						<%  } else if (p.isEnum()) { %>
+						<dd>\${${propertyName}?.${p.name}?.encodeAsHTML()}</dd>
+						<%  } else if (p.oneToMany || p.manyToMany) { %>
+						<dd style="text-align: left;">
+							<ul>
+							<g:each in="\${${propertyName}.${p.name}}" var="${p.name[0]}">
+								<li><g:link controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${p.name[0]}.id}">\${${p.name[0]}?.encodeAsHTML()}</g:link></li>
+							</g:each>
+							</ul>
+						</dd>
+						<%  } else if (p.manyToOne || p.oneToOne) { %>
+						<dd><g:link controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${propertyName}?.${p.name}?.id}">\${${propertyName}?.${p.name}?.encodeAsHTML()}</g:link></dd>
+						<%  } else if (p.type == Boolean.class || p.type == boolean.class) { %>
+						<dd><g:formatBoolean boolean="\${${propertyName}?.${p.name}}" /></dd>
+						<%  } else if (p.type == Date.class || p.type == java.sql.Date.class || p.type == java.sql.Time.class || p.type == Calendar.class) { %>
+						<dd><g:formatDate date="\${${propertyName}?.${p.name}}" /></dd>
+						<%  } else { %>
+						<dd>\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</dd>
+						<%  } %>
+					</g:if>
 				<%  } %>
 			</dl>
 			<fieldset class="buttons">
