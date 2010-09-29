@@ -24,7 +24,7 @@
             </g:if>
 			<dl>
 				<%  excludedProps = Event.allEvents.toList() << 'version'
-					props = domainClass.properties.findAll { !excludedProps.contains(it.name) }
+					props = domainClass.properties.findAll { !excludedProps.contains(it.name) && !domainClass.constrainedProperties[it.name]?.password }
 					Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
 					props.each { p -> %>
 					<g:if test="\${fieldValue(bean: ${propertyName}, field: '${p.name}')}">

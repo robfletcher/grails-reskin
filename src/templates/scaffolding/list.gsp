@@ -25,7 +25,7 @@
 				<thead>
 					<tr>
 					<%  excludedProps = Event.allEvents.toList() << 'version'
-						props = domainClass.properties.findAll { !excludedProps.contains(it.name) && it.type != Set.class }
+						props = domainClass.properties.findAll { !excludedProps.contains(it.name) && it.type != Set.class && !domainClass.constrainedProperties[it.name]?.password }
 						Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
 						props.eachWithIndex { p, i ->
 							if (i < 6) {

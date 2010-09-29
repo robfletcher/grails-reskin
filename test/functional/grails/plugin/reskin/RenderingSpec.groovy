@@ -43,8 +43,8 @@ class RenderingSpec extends GebSpec {
 		to ShowPersonPage, "$person1.id"
 
 		then:
-		$("#title").text() == "Mr"
-		$("#gender").text() == "Male"
+		$("dt", text: "Title").next("dd").text() == "Mr"
+		$("dt", text: "Gender").next("dd").text() == "Male"
 	}
 
 }
