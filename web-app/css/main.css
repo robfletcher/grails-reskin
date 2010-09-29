@@ -31,9 +31,9 @@ input, select, textarea {
 	border: 1px solid #ccc;
 	font: 16px verdana, sans-serif;
 	padding: 2px 4px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	behavior: url(/css/PIE.htc);
 }
 
@@ -78,9 +78,9 @@ nav {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	border: 1px solid #ccc;
 	padding: 7px 12px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	behavior: url(/css/PIE.htc);
 }
 
@@ -254,9 +254,9 @@ nav.paginateButtons .currentStep {
 
 fieldset {
 	border: 1px solid #ccc;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	behavior: url(/css/PIE.htc);
 }
 
@@ -285,9 +285,9 @@ dl {
 	border: 1px solid #ccc;
 	padding: 20px 20px 10px 20px;
 	_zoom: 1;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	behavior: url(/css/PIE.htc);
 }
 
