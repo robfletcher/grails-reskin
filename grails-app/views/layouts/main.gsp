@@ -10,13 +10,16 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'handheld.css')}" media="handheld">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'PIE.htc')}">
 		<g:layoutHead/>
 		<g:javascript library="modernizr"/>
 		<g:javascript library="jquery" plugin="jquery"/>
 		<jqui:resources components="datepicker" mode="normal" />
 	</head>
-	<body>
+	<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+	<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
+	<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
+	<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
+	<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 		<div id="container">
 			<header>
 				<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>

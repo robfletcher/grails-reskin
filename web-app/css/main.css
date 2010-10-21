@@ -34,7 +34,6 @@ input, select, textarea {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	behavior: url(/css/PIE.htc);
 }
 
 select {
@@ -72,27 +71,36 @@ section.list, section.dialog {
 nav {
 	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
-	*background: none;
-	*zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	border: 1px solid #ccc;
 	padding: 7px 12px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	behavior: url(/css/PIE.htc);
+}
+
+.ie6 nav, .ie7 nav {
+	background: none;
+	zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 }
 
 nav ul {
 	padding: 0;
-	*zoom: 1;
+}
+
+.ie6 nav ul {
+	zoom: 1;
 }
 
 nav ul li {
 	display: inline-block;
 	padding: 0 5px;
-	*float: left;
+}
+
+.ie6 nav ul li, .ie7 nav ul li {
+	display: inline;
+	zoom: 1;
 }
 
 nav a {
@@ -182,11 +190,14 @@ td, th {
 th {
 	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
-	*background: none;
-	*zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	line-height: 18px;
+}
+
+.ie6 th, .ie7 th {
+	background: none;
+	zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 }
 
 th a:link, th a:visited, th a:hover {
@@ -237,7 +248,6 @@ nav.paginateButtons {
 	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
 	border-radius: 0 0 5px 5px;
-	behavior: url(/css/PIE.htc);
 }
 
 nav.paginateButtons a {
@@ -257,7 +267,6 @@ fieldset {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	behavior: url(/css/PIE.htc);
 }
 
 fieldset ul {
@@ -288,7 +297,6 @@ dl {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	behavior: url(/css/PIE.htc);
 }
 
 dl dt,
@@ -311,15 +319,18 @@ dl dd {
 fieldset.buttons {
 	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
-	*background: none;
-	*zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
 	border: 1px solid #ccc;
 	color: #666;
 	margin-top: 5px;
 	overflow: hidden;
 	padding: 5px 2px;
+}
+
+.ie6 fieldset.buttons, .ie7 fieldset.buttons {
+	background: none;
+	zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
 }
 
 fieldset.buttons input {
