@@ -27,7 +27,7 @@ grails.project.dependency.resolution = {
 		test(":spock:0.5-groovy-1.7-SNAPSHOT") {
 			excludes "spock-grails-support"
 		}
-		test(":geb:0.4") {
+		test(":geb:0.5-SNAPSHOT") {
 			excludes "geb-junit3", "geb-junit4"
 		}
 		test ":build-test-data:1.1.1"
