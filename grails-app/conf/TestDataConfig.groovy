@@ -1,11 +1,12 @@
 import static org.apache.commons.lang.math.RandomUtils.*
 import static org.apache.commons.lang.RandomStringUtils.*
+import static org.apache.commons.lang.math.RandomUtils.nextInt
 
 testDataConfig {
     sampleData {
         "test.Person" {
 			password = { randomAlphanumeric(8) }
-			birthdate = { new Date(nextLong()) }
+			birthdate = { new Date() - nextInt(36500) }
 			email = { "${randomAlphanumeric(8)}@${randomAlphabetic(5)}.com" }
 			website = { new URL("http://www.${randomAlphabetic(5)}.com/") }
 		}

@@ -15,7 +15,7 @@ class InputTypeSpec extends GebSpec {
 	def setupSpec() {
 		Person.withTransaction {
 			person1 = Person.build(name: "Al Coholic", gender: MALE)
-			person2 = Person.build(name: "Bea O'Problem", gender: FEMALE)
+			person2 = Person.build(name: "Bea O'Problem", gender: FEMALE, birthdate: null)
 		}
 	}
 
@@ -63,5 +63,13 @@ class InputTypeSpec extends GebSpec {
 		"gender"    | ["MALE", "FEMALE"]                     | ["Male", "Female"]               | "MALE"
 		"title"     | ["", "MR", "MRS", "MS", "DR"]          | ["", "Mr", "Mrs", "Ms", "Dr"]    | null
 		"spouse.id" | ["null", "$person1.id", "$person2.id"] | ["", person1.name, person2.name] | "null"
+	}
+
+	def "date inputs for null values render as empty"() {
+		when: "I am on the edit page"
+		to EditPersonPage, person2.id
+
+		then: "an empty date input appears"
+		form.birthdate == ""
 	}
 }
