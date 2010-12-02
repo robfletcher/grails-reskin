@@ -16,6 +16,7 @@ class CreatePersonPage extends Page {
 		errorMessages(required: false) { $("aside.errors ul li") }
 		form(dynamic: true) { $("form") }
 		createButton(toPage: ShowPersonPage) { form.create() }
+		navigation { module NavigationModule, $("header nav") }
 	}
 
 }

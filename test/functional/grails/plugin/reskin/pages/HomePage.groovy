@@ -1,11 +1,14 @@
 package grails.plugin.reskin.pages
 
-/**
- * Created by IntelliJ IDEA.
- * User: rob
- * Date: 02/12/2010
- * Time: 04:21
- * To change this template use File | Settings | File Templates.
- */
-class HomePage {
+import geb.Page
+
+class HomePage extends Page {
+
+	static url = "/"
+	static at = { title == "Welcome to Grails" }
+
+	static content = {
+		navigation { module NavigationModule, $("header nav") }
+	}
+
 }

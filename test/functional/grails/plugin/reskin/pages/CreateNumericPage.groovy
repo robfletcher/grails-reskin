@@ -8,6 +8,7 @@ class CreateNumericPage extends Page {
 
 	static content = {
 		form { $("form") }
+		navigation { module NavigationModule, $("header nav") }
 	}
 
 }

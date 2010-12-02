@@ -1,6 +1,7 @@
+/target/
+/out/
+/.idea/
 devDB.*
-target/
-.idea/
 *.iml
 *.log
 *.zip
