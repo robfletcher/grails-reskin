@@ -13,9 +13,6 @@ grails.project.dependency.resolution = {
 		test("org.hamcrest:hamcrest-all:1.1") {
 			excludes "junit", "easymock", "jmock"
 		}
-		test("org.spockframework:spock-grails-support:0.5-groovy-1.7-SNAPSHOT") {
-			excludes "svnkit", "servlet-api", "jstl", "oscache", "spring-webflow", "grails-webflow", "ant-junit", "grails-test", "junit", "slf4j-log4j12", "hsqldb", "grails-gorm", "grails-crud", "groovy-all"
-		}
 		test("org.seleniumhq.selenium:selenium-htmlunit-driver:2.0a5") {
 			excludes "xml-apis"
 		}
@@ -24,9 +21,7 @@ grails.project.dependency.resolution = {
 		runtime ":bean-fields:1.0-RC3"
 		runtime ":jquery:1.4.2.5"
 		runtime ":jquery-ui:1.8.2.4"
-		test(":spock:0.5-groovy-1.7-SNAPSHOT") {
-			excludes "spock-grails-support"
-		}
+		test(":spock:0.5-groovy-1.7-SNAPSHOT")
 		test(":geb:0.5-SNAPSHOT") {
 			excludes "geb-junit3", "geb-junit4"
 		}
