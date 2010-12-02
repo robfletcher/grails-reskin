@@ -6,12 +6,20 @@ class NavigationModule extends Module {
 
 	static content = {
 		items {
-			$("ul li").collect {
+			$("ul.navigation li").collect {
 				module NavigationItem, it
 			}
 		}
 		activeItem(required: false) {
-			module NavigationItem, $("ul li.active", 0)
+			module NavigationItem, $("ul li.navigation_active", 0)
+		}
+		subItems(required: false) {
+			$("ul.subnavigation li").collect {
+				module NavigationItem, it
+			}
+		}
+		activeSubItem(required: false) {
+			module NavigationItem, $("ul.subnavigation li.subnavigation_active", 0)
 		}
 	}
 
@@ -23,14 +31,6 @@ class NavigationItem extends Module {
 		link { $("a") }
 		label { link.text() }
 		url { link.attr("href") }
-		subItems(required: false) {
-			$("ul li").collect {
-				module NavigationItem, it
-			}
-		}
-		activeSubItem(required: false) {
-			module NavigationItem, $("ul li.active", 0)
-		}
 	}
 
 }

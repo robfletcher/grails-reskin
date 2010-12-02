@@ -26,25 +26,8 @@
 			<header>
 				<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
 				<nav>
-					<ul>
-						<li class="${request.requestURI == '/' ? 'active' : ''}">
-							<a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a>
-						</li>
-						<nav:eachItem var="item">
-							<li class="${item.active ? 'active' : ''}">
-								<g:link controller="${item.controller}" action="${item.action}">${item.title}</g:link>
-								<g:if test="${item.active}">
-									<ul>
-										<nav:eachSubItem var="subItem">
-											<li class="${subItem.active ? 'active' : ''}">
-												<g:link controller="${subItem.controller}" action="${subItem.action}">${subItem.title}</g:link>
-											</li>
-										</nav:eachSubItem>
-									</ul>
-								</g:if>
-							</li>
-						</nav:eachItem>
-					</ul>
+					<nav:render group="main"/>
+					<nav:renderSubItems group="main"/>
 				</nav>
 			</header>
 			<div id="main">

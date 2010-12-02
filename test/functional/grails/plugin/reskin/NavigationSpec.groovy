@@ -1,11 +1,8 @@
 package grails.plugin.reskin
 
 import grails.plugin.geb.GebSpec
-import grails.plugin.reskin.pages.HomePage
-import grails.plugin.reskin.pages.ListPersonPage
-import grails.plugin.reskin.pages.CreateNumericPage
-import grails.plugin.reskin.pages.CreatePersonPage
 import spock.lang.Unroll
+import grails.plugin.reskin.pages.*
 
 class NavigationSpec extends GebSpec {
 
@@ -16,10 +13,10 @@ class NavigationSpec extends GebSpec {
 
 	def "all controllers have a top-level nav item"() {
 		given:
-		to HomePage
+		to ListPersonPage
 
 		expect:
-		navigation.items.label == ["Home", "Person", "Numeric"]
+		navigation.items.label == ["Person", "Numeric"]
 	}
 
 	@Unroll("top level nav item '#label' is highligted on #page")
@@ -32,7 +29,6 @@ class NavigationSpec extends GebSpec {
 
 		where:
 		page              | label
-		HomePage          | "Home"
 		ListPersonPage    | "Person"
 		CreatePersonPage  | "Person"
 		CreateNumericPage | "Numeric"
@@ -44,8 +40,8 @@ class NavigationSpec extends GebSpec {
 		to page
 
 		expect:
-		navigation.activeItem.subItems.label == subItems
-		navigation.activeItem.activeSubItem.label == activeSubItem
+		navigation.subItems.label == subItems
+		navigation.activeSubItem.label == activeSubItem
 
 		where:
 		page              | subItems           | activeSubItem
