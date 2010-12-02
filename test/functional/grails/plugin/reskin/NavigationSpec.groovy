@@ -32,6 +32,7 @@ class NavigationSpec extends GebSpec {
 
 		where:
 		page              | label
+		HomePage          | "Home"
 		ListPersonPage    | "Person"
 		CreatePersonPage  | "Person"
 		CreateNumericPage | "Numeric"
@@ -47,9 +48,10 @@ class NavigationSpec extends GebSpec {
 		navigation.activeItem.activeSubItem.label == activeSubItem
 
 		where:
-		page             | subItems           | activeSubItem
-		ListPersonPage   | ["List", "Create"] | "List"
-		CreatePersonPage | ["List", "Create"] | "Create"
+		page              | subItems           | activeSubItem
+		ListPersonPage    | ["List", "Create"] | "List"
+		CreatePersonPage  | ["List", "Create"] | "Create"
+		CreateNumericPage | ["List", "Create"] | "Create"
 	}
 
 }

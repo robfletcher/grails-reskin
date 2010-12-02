@@ -27,7 +27,9 @@
 				<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
 				<nav>
 					<ul>
-						<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+						<li class="${request.requestURI == '/' ? 'active' : ''}">
+							<a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a>
+						</li>
 						<nav:eachItem var="item">
 							<li class="${item.active ? 'active' : ''}">
 								<g:link controller="${item.controller}" action="${item.action}">${item.title}</g:link>
