@@ -15,6 +15,10 @@ This is an attempt to reskin the standard Grails scaffolding and index pages usi
 
 ## To-do
 
+* Primary navigation should be in Sitemesh layout
+* Integrate EnhanceJS
+* Add WAI-ARIA roles to appropriate elements
+* Use divs with classes rather than HTML5 block elements?
 * Ensure everything works in IE
 * 404 page
 * Empty text in date input is rendered as _null_ in Webkit browsers
