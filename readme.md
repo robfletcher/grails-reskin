@@ -21,6 +21,7 @@ This is an attempt to reskin the standard Grails scaffolding and index pages usi
 * Ensure everything works in IE
 * 404 page
 * Empty text in date input is rendered as _null_ in Webkit browsers
+* Error messages should be at the top of forms with tooltips on fields
 * Apple touch icon is wrong size, should be 57x57
 * Hi-res Apple touch icon (114x114)
 

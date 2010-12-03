@@ -4,7 +4,7 @@
 		<title>Welcome to Grails</title>
 		<meta name="layout" content="main"/>
 		<style type="text/css" media="screen">
-		aside {
+		.aside {
 			background: #ccc;
 			background: -moz-linear-gradient(top, #fff, #bbb);
 			background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#bbb));
@@ -23,19 +23,19 @@
 			_padding-top: 0;
 		}
 
-		aside#pluginList {
+		#pluginList {
 			clear: left;
 		}
 
-		aside * {
+		.aside * {
 			margin: 0;
 		}
 
-		aside ul {
+		.aside ul {
 			list-style-type: none;
 		}
 
-		aside header h1 {
+		.aside h2 {
 			text-transform: uppercase;
 			font-size: 1.1em;
 			margin-bottom: 10px;
@@ -47,17 +47,15 @@
 			font-size: 1.2em;
 		}
 
-		section.main {
+		.main {
 			float: none;
 			margin: 0 20px 10px 280px;
 		}
 		</style>
 	</head>
 	<body>
-		<aside id="status">
-			<header>
-				<h1>Application Status</h1>
-			</header>
+		<div class="aside" id="status">
+			<h2>Application Status</h2>
 			<ul>
 				<li>App version: <g:meta name="app.version"/></li>
 				<li>Grails version: <g:meta name="app.grails.version"/></li>
@@ -67,37 +65,31 @@
 				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
 				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
 			</ul>
-		</aside>
-		<aside id="pluginList">
-			<header>
-				<h1>Installed Plugins</h1>
-			</header>
+		</div>
+		<div class="aside" id="pluginList">
+			<h2>Installed Plugins</h2>
 			<ul>
 				<g:set var="pluginManager" value="${applicationContext.getBean('pluginManager')}"></g:set>
 				<g:each var="plugin" in="${pluginManager.allPlugins}">
 					<li>${plugin.name} - ${plugin.version}</li>
 				</g:each>
 			</ul>
-		</aside>
-		<section class="main">
-			<header>
-				<h1>Welcome to Grails</h1>
-			</header>
+		</div>
+		<div class="section main">
+			<h1>Welcome to Grails</h1>
 			<p>Congratulations, you have successfully started your first Grails application! At the moment
 			this is the default page, feel free to modify it to either redirect to a controller or display whatever
 			content you may choose. Below is a list of controllers that are currently deployed in this application,
 			click on each to execute its default action:</p>
 
-			<section id="controllerList">
-				<header>
-					<h2>Available Controllers:</h2>
-				</header>
+			<div class="section" id="controllerList">
+				<h2>Available Controllers:</h2>
 				<ul>
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 					</g:each>
 				</ul>
-			</section>
-		</section>
+			</div>
+		</div>
 	</body>
 </html>

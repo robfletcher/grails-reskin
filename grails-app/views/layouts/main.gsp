@@ -23,18 +23,18 @@
 	</head>
 	<body>
 		<div id="container">
-			<header>
+			<div class="header">
 				<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
-				<nav>
+				<div class="nav">
 					<nav:render group="main"/>
 					<nav:renderSubItems group="main"/>
-				</nav>
-			</header>
+				</div>
+			</div>
 			<div id="main">
 				<g:layoutBody/>
 			</div>
-			<footer>
-			</footer>
+			<div class="footer">
+			</div>
 		</div>
 		<g:javascript src="application.js"/>
 		<g:javascript src="plugins.js"/>

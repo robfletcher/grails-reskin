@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Grails Runtime Exception</title>
 		<style type="text/css">
-		header, article, section, aside, nav {
-			display: block;
-		}
-
-		section.message {
+		.message {
 			border: 1px solid black;
 			padding: 5px;
 			background-color: #E9E9E9;
 		}
 
-		section.stack {
+		.stack {
 			border: 1px solid black;
 			padding: 5px;
 			overflow: auto;
 			height: 300px;
 		}
 
-		section.snippet {
+		.snippet {
 			padding: 5px;
 			background-color: white;
 			border: 1px solid black;
 			margin: 3px;
-			font-family: courier;
+			font-family: courier, monospace;
 		}
 		</style>
 	</head>
 
 	<body>
-		<header>
-			<hgroup>
-				<h1>Grails Runtime Exception</h1>
-				<h2>Error Details</h2>
-			</hgroup>
-		</header>
+		<div class="header">
+			<h1>Grails Runtime Exception</h1>
+		</div>
 
-		<section class="message">
+		<div class="section message">
+			<h2>Error Details</h2>
 			<strong>Error ${request.'javax.servlet.error.status_code'}:</strong> ${request.'javax.servlet.error.message'.encodeAsHTML()}<br/>
 			<strong>Servlet:</strong> ${request.'javax.servlet.error.servlet_name'}<br/>
 			<strong>URI:</strong> ${request.'javax.servlet.error.request_uri'}<br/>
@@ -49,22 +47,20 @@
 				<strong>Class:</strong> ${exception.className} <br/>
 				<strong>At Line:</strong> [${exception.lineNumber}] <br/>
 				<strong>Code Snippet:</strong><br/>
-				<section class="snippet">
+				<div class="section snippet">
 					<g:each var="cs" in="${exception.codeSnippet}">
 						${cs?.encodeAsHTML()}<br/>
 					</g:each>
-				</section>
+				</div>
 			</g:if>
-		</section>
+		</div>
 		<g:if test="${exception}">
-			<section class="exception">
-				<header>
-					<h2>Stack Trace</h2>
-				</header>
-				<section class="stack">
-				<pre><g:each in="${exception.stackTraceLines}">${it.encodeAsHTML()}<br/></g:each></pre>
-				</section>
-			</section>
+			<div class="section exception">
+				<h2>Stack Trace</h2>
+				<div class="section stack">
+					<pre><g:each in="${exception.stackTraceLines}">${it.encodeAsHTML()}<br/></g:each></pre>
+				</div>
+			</div>
 		</g:if>
 	</body>
 </html>
