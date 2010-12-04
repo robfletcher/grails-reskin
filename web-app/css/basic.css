@@ -1,0 +1,22 @@
+/*fouc*/
+html.enhanced #container { opacity: 0; }
+html.enhanced-incomplete #container { opacity: 1; }
+html.enhanced-loaded #container { opacity: 1; }
+
+body { font-family:"Segoe UI", Tahoma, Helvetica, "Helvetica Neue", Arial, sans-serif; color:#333; }
+
+/*links*/
+a:link { color:#368512; }
+a:visited { color:#8dc262; }
+a:hover, a:active { color:#2a7801; }
+a img { border: 0; }
+
+/*forms*/
+input.text,textarea { display: block; }
+span.required { color:red; }
+
+/*Print-only styles*/
+@media print {
+	#container { width: auto; margin: 25px; }
+	html.enhanced #container { opacity: 1; }
+}

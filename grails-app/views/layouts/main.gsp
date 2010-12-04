@@ -12,13 +12,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'handheld.css')}" media="handheld">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'basic.css')}">
 		<g:layoutHead/>
-		<g:javascript library="modernizr"/>
-		<g:javascript library="jquery" plugin="jquery"/>
-		<jqui:resources components="datepicker" mode="normal"/>
+		<g:javascript src="enhancejs/enhance.min.js"/>
+		<g:javascript>
+			enhance({
+				loadStyles: [
+					'${resource(dir: 'css', file: 'style.css')}',
+					'${resource(dir: 'jquery-ui/themes/ui-lightness', file: 'jquery-ui-1.8.2.custom.css', plugin: 'jquery-ui')}'
+				],
+				loadScripts: [
+					'${resource(dir: 'js/modernizr', file: 'modernizr-1.6.min.js')}',
+					'${resource(dir: 'js/jquery', file: 'jquery-1.4.2-min.js', plugin: 'jquery')}',
+					'${resource(dir: 'jquery-ui/js', file: 'jquery-ui-1.8.2.custom.min.js', plugin: 'jquery-ui')}',
+					{href: '${resource(dir: 'js/belatedpng', file: 'dd_belatedpng.js')}', iecondition: 6},
+					'${resource(dir: 'js', file: 'application.js')}'
+				]
+			});
+		</g:javascript>
 		<nav:resources override="true"/>
 	</head>
 	<body>
@@ -27,7 +38,7 @@
 				<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
 				<div class="nav">
 					<nav:render group="main"/>
-					<nav:renderSubItems group="main"/>
+					<g:if test="${controllerName}"><nav:renderSubItems group="main"/></g:if>
 				</div>
 			</div>
 			<div id="main">
@@ -36,10 +47,5 @@
 			<div class="footer">
 			</div>
 		</div>
-		<g:javascript src="application.js"/>
-		<g:javascript src="plugins.js"/>
-		<!--[if lt IE 7 ]>
-		<g:javascript library="belatedpng"/>
-		<![endif]-->
 	</body>
 </html>
