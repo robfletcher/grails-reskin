@@ -8,12 +8,10 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-		<section class="list">
-			<header>
-				<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			</header>
+		<div class="section list">
+			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="\${flash.message}">
-			<aside class="message">\${flash.message}</aside>
+			<div class="message">\${flash.message}</div>
 			</g:if>
 			<table>
 				<thead>
@@ -50,9 +48,9 @@
 				</g:each>
 				</tbody>
 			</table>
-			<nav class="paginateButtons">
+			<div class="nav paginateButtons">
 				<g:paginate total="\${${propertyName}Total}" />
-			</nav>
-		</section>
+			</div>
+		</div>
     </body>
 </html>

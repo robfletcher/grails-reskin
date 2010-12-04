@@ -36,7 +36,7 @@ class MessagesSpec extends GebSpec {
 		"error" in $("#$property").classes()
 		"error" in form."$property"().classes()
 		form."$property"().hasClass("error")
-		form."$property"().next("aside").text() == errorMessage
+		form."$property"().next(".errorMessage").text() == errorMessage
 
 		where:
 		property    | value     | errorMessage
@@ -59,7 +59,7 @@ class MessagesSpec extends GebSpec {
 		at CreatePersonPage
 
 		and: "the field is marked with an error"
-		form.name().next("aside").text() == errorMessage
+		form.name().next(".errorMessage").text() == errorMessage
 		!(errorMessage in errorMessages*.text())
 
 		where:

@@ -8,7 +8,7 @@ class HomePage extends Page {
 	static at = { title == "Welcome to Grails" }
 
 	static content = {
-		navigation { module NavigationModule, $("header nav") }
+		navigation { module NavigationModule, $(".header .nav") }
 	}
 
 }

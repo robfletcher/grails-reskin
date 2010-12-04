@@ -8,12 +8,10 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-		<section class="dialog">
-			<header>
-            	<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			</header>
+		<div class="section">
+			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="\${flash.message}">
-            <aside class="message">\${flash.message}</aside>
+            <div class="message">\${flash.message}</div>
             </g:if>
 			<dl>
 				<%  excludedProps = Event.allEvents.toList() << 'version'
@@ -53,6 +51,6 @@
 					<g:actionSubmit class="delete" action="delete" value="\${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('\${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</g:form>
 			</fieldset>
-		</section>
+		</div>
     </body>
 </html>
