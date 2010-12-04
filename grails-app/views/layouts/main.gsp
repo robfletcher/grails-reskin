@@ -27,7 +27,10 @@
 					'${resource(dir: 'jquery-ui/js', file: 'jquery-ui-1.8.6.custom.min.js', plugin: 'jquery-ui')}',
 					{href: '${resource(dir: 'js/belatedpng', file: 'dd_belatedpng.js')}', iecondition: 6},
 					'${resource(dir: 'js', file: 'application.js')}'
-				]
+				],
+				queueLoading: false,
+				forcePassText: "Enhanced version",
+				forceFailText: "Basic version"
 			});
 		</g:javascript>
 		<nav:resources override="true"/>
