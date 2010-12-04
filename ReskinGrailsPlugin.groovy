@@ -23,7 +23,7 @@ class ReskinGrailsPlugin {
 	def grailsVersion = "1.2.0 > *"
 	def dependsOn = [
 			beanFields: "1.0-RC3",
-			jqueryUi: "1.8.2.4"
+			jqueryUi: "1.8.2.4 > *"
 	]
 	def pluginExcludes = [
 			"grails-app/controllers/**",

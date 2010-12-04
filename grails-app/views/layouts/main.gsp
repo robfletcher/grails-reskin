@@ -19,12 +19,12 @@
 			enhance({
 				loadStyles: [
 					'${resource(dir: 'css', file: 'style.css')}',
-					'${resource(dir: 'jquery-ui/themes/ui-lightness', file: 'jquery-ui-1.8.2.custom.css', plugin: 'jquery-ui')}'
+					'${resource(dir: 'jquery-ui/themes/smoothness', file: 'jquery-ui-1.8.6.custom.css', plugin: 'jquery-ui')}'
 				],
 				loadScripts: [
 					'${resource(dir: 'js/modernizr', file: 'modernizr-1.6.min.js')}',
-					'${resource(dir: 'js/jquery', file: 'jquery-1.4.2-min.js', plugin: 'jquery')}',
-					'${resource(dir: 'jquery-ui/js', file: 'jquery-ui-1.8.2.custom.min.js', plugin: 'jquery-ui')}',
+					'${resource(dir: 'js/jquery', file: 'jquery-1.4.3.min.js', plugin: 'jquery')}',
+					'${resource(dir: 'jquery-ui/js', file: 'jquery-ui-1.8.6.custom.min.js', plugin: 'jquery-ui')}',
 					{href: '${resource(dir: 'js/belatedpng', file: 'dd_belatedpng.js')}', iecondition: 6},
 					'${resource(dir: 'js', file: 'application.js')}'
 				]
