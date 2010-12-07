@@ -1,357 +1,117 @@
-html * {
+/* layout */
+body {
+	font-size: 62.5%; /* 10pt in most browsers, which makes ems calculations easy */
+	margin: 1em;
+}
+
+#main {
+}
+
+/* page header */
+#header {
+	margin-top: 0.5em;
+}
+
+.logo {
+	display: inline-block;
+	padding: 1em 1em 0;
+}
+
+/* primary nav */
+.nav {
+	background-color: #161616;
+	background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ffffff),color-stop(1, #eaeaea));
+	-moz-border-radius: 6px;
+ -webkit-border-radius: 6px;
+		 border-radius: 6px;
+}
+
+.nav ul {
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+}
+
+.nav li {
+	float: left;
+}
+
+.nav li.navigation_active,
+.nav li.subnavigation_active {
+	font-weight: bold;
+}
+
+.nav a:link, .nav a:active, .nav a:visited {
+	color: #444;
+	display: block;
+	padding: 0.25em 1em;
+	text-decoration: none;
+}
+
+.nav a:hover {
+	text-shadow: 1px 1px 3px #888;
+}
+
+/* content area */
+#main > * {
+	margin: 2em;
+}
+
+/* enhancejs toggle widget */
+.enhanced_toggleResult {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+}
+
+/* list pages */
+.list table {
+	border: 1px solid #ccc;
+	width: 100%;
+}
+
+/* forms */
+form {
+	font-size: 1.5em;
+}
+
+form ul {
+	list-style-type: none;
 	margin: 0;
 }
 
-/* GENERAL */
-
-.spinner {
-	padding: 5px;
-	position: absolute;
-	right: 0;
+label {
+	margin-top: 1em;
 }
 
-a#grailsLogo {
-	display: inline-block;
-	padding: 20px;
-}
-
-h1 {
-	color: #48802c;
-	font-size: 16px;
-	font-weight: normal;
-	margin: 10px 0 3px 0;
-}
-
-ul {
-	padding-left: 15px;
+label, input, select, textarea {
+	display: block;
 }
 
 input, select, textarea {
 	background-color: #fcfcfc;
 	border: 1px solid #ccc;
-	font: 16px verdana, sans-serif;
+	outline: none;
 	padding: 2px 4px;
-	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-	border-radius: 3px;
+ -webkit-border-radius: 3px;
+		 border-radius: 3px;
 }
 
-select {
-	padding: 2px 2px 2px 0;
-}
-
-textarea {
-	width: 250px;
-	height: 150px;
-	vertical-align: top;
-}
-
-input, select, textarea {
-	outline: none;
-}
 input:focus, select:focus, textarea:focus {
+	-moz-box-shadow: 0px 0px 1px 1px #b2d1ff;
+ -webkit-box-shadow: 0px 0px 1px 1px #b2d1ff;
+		 box-shadow: 0px 0px 1px 1px #b2d1ff;
 	border: 1px solid #b2d1ff;
 	outline: none;
 }
-
-/* LAYOUT */
-
-#container {
-	max-width: 960px;
-	margin: 0 auto;
-}
-
-section.list, section.dialog {
-	margin: 0 auto 10px auto;
-	padding: 0 20px;
-}
-
-/* NAVIGATION MENU */
-
-nav {
-	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-	border: 1px solid #ccc;
-	padding: 7px 12px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.ie6 nav, .ie7 nav {
-	background: none;
-	zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
-}
-
-nav ul {
-	padding: 0;
-}
-
-.ie6 nav ul {
-	zoom: 1;
-}
-
-nav ul li {
-	display: inline-block;
-	padding: 0 5px;
-}
-
-.ie6 nav ul li, .ie7 nav ul li {
-	display: inline;
-	zoom: 1;
-}
-
-nav a {
-	color: #333;
-	display: inline-block;
-	font-weight: bold;
-	padding: 4px 6px;
-	text-decoration: none;
-}
-
-nav a.home {
-	background: url(/images/skin/house.png) center left no-repeat;
-	color: #333;
-	padding-left: 25px;
-}
-
-nav a.list {
-	background: url(/images/skin/database_table.png) center left no-repeat;
-	color: #333;
-	padding-left: 25px;
-}
-
-nav a.create {
-	background: url(/images/skin/database_add.png) center left no-repeat;
-	color: #333;
-	padding-left: 25px;
-}
-
-/* MESSAGES AND ERRORS */
-
-aside.message {
-	background: #f3f8fc url(/images/skin/information.png) 8px 50% no-repeat;
-	border: 1px solid #b2d1ff;
-	color: #006dba;
-	margin: 10px 0 5px 0;
-	padding: 5px 5px 5px 30px
-}
-
-aside.errors {
-	background: #fff3f3;
-	border: 1px solid red;
-	color: #cc0000;
-	margin: 10px 0 5px 0;
-	padding: 5px 0 5px 0;
-}
-
-aside.errors ul {
-	list-style: none;
-	padding: 0;
-}
-
-aside.errors li {
-	background: url(/images/skin/exclamation.png) 8px 0% no-repeat;
-	line-height: 16px;
-	padding-left: 30px;
-}
-
-select.error, input.error {
-	border: 1px solid #f44;
-}
-
-fieldset ul li .errorMessage {
-	background: url(/images/skin/exclamation.png) 8px 5px no-repeat transparent;
-	clear: both;
-	color: red;
-	padding: 5px 5px 5px 30px;
-}
-
-/* TABLES */
-
-table {
-	border: 1px solid #ccc;
-	width: 100%
-}
-
-tr {
-	border: 0;
-}
-
-td, th {
-	line-height: 12px;
-	padding: 10px;
-	text-align: left;
-	vertical-align: top;
-}
-
-th {
-	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-	line-height: 18px;
-}
-
-.ie6 th, .ie7 th {
-	background: none;
-	zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
-}
-
-th a:link, th a:visited, th a:hover {
-	color: #333;
-	display: block;
-	width: 100%;
-}
-
-th.asc a, th.desc a {
-	background-position: right;
-	background-repeat: no-repeat;
-}
-
-th.asc a {
-	background-image: url(/images/skin/sorted_asc.gif);
-}
-
-th.desc a {
-	background-image: url(/images/skin/sorted_desc.gif);
-}
-
-.odd {
-	background: #f7f7f7;
-}
-
-.even {
-	background: #fff;
-}
-
-/* LIST */
-
-.list th, .list td {
-	border-left: 1px solid #ddd;
-}
-
-.list th:hover, .list tr:hover {
-	background: #b2d1ff;
-}
-
-/* PAGINATION */
-
-nav.paginateButtons {
-	border: 1px solid #ccc;
-	border-top: 0;
-	font-size: 10px;
-	overflow: hidden;
-	text-align: center;
-	-webkit-border-radius: 0 0 5px 5px;
-	-moz-border-radius: 0 0 5px 5px;
-	border-radius: 0 0 5px 5px;
-}
-
-nav.paginateButtons a {
-	margin: 0 3px;
-	padding: 2px 6px;
-}
-
-nav.paginateButtons .currentStep {
-	color: #aaa;
-	padding: 2px 3px;
-}
-
-/* DIALOG */
-
-fieldset {
-	border: 1px solid #ccc;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-fieldset ul {
-	list-style-type: none;
-	padding: 20px;
-}
-
-fieldset ul li {
-	margin-bottom: 10px;
-}
-
-fieldset ul li label {
-	color: #888;
-	display: block;
-	margin-left: 7px; /* lines up with input content which have border radius 5px, padding-left 2px */
-	white-space: nowrap;
-}
-
-fieldset ul li label.required {
-	color: #444;
-	font-weight: bold;
-}
-
-dl {
-	border: 1px solid #ccc;
-	padding: 20px 20px 10px 20px;
-	_zoom: 1;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-dl dt,
-dl dd {
-	padding: 0;	
-}
-
-dl dt {
-	color: #888;
-	white-space: nowrap;
-}
-
-dl dd {
-	font: 16px verdana, sans-serif;
-	margin-bottom: 10px;
-}
-
-/* ACTION BUTTONS */
 
 fieldset.buttons {
-	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eaeaea));
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-	border: 1px solid #ccc;
-	color: #666;
-	margin-top: 5px;
-	overflow: hidden;
-	padding: 5px 2px;
-}
-
-.ie6 fieldset.buttons, .ie7 fieldset.buttons {
-	background: none;
-	zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
+	padding: 1em;
+	text-align: right;
 }
 
 fieldset.buttons input {
-	border: 0;
-	font: bold 13px sans-serif;
-	margin-left: 3px;
-	overflow: visible;
-	padding: 2px 6px;
-}
-
-fieldset.buttons input.delete {
-	background: transparent url(/images/skin/database_delete.png) 5px 50% no-repeat;
-	padding-left: 28px;
-}
-
-fieldset.buttons input.edit {
-	background: transparent url(/images/skin/database_edit.png) 5px 50% no-repeat;
-	padding-left: 28px;
-}
-
-fieldset.buttons input.save {
-	background: transparent url(/images/skin/database_save.png) 5px 50% no-repeat;
-	padding-left: 28px;
+	display: inline-block;
 }

@@ -18,7 +18,8 @@
 		<g:javascript>
 			enhance({
 				loadStyles: [
-					'${resource(dir: 'css', file: 'style.css')}',
+					'${resource(dir: 'css', file: 'boilerplate.css')}',
+					'${resource(dir: 'css', file: 'main.css')}',
 					'${resource(dir: 'jquery-ui/themes/smoothness', file: 'jquery-ui-1.8.6.custom.css', plugin: 'jquery-ui')}'
 				],
 				loadScripts: [
@@ -29,26 +30,24 @@
 					'${resource(dir: 'js', file: 'application.js')}'
 				],
 				queueLoading: false,
-				forcePassText: "Enhanced version",
-				forceFailText: "Basic version"
+				forcePassText: "${message(code: 'enhanced.version.label', default: 'Enhanced version')}",
+				forceFailText: "${message(code: 'basic.version.label', default: 'Basic version')}"
 			});
 		</g:javascript>
 		<nav:resources override="true"/>
 	</head>
 	<body>
-		<div id="container">
-			<div class="header">
-				<a href="http://grails.org" id="grailsLogo" class="logo"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
-				<div class="nav">
-					<nav:render group="main"/>
-					<g:if test="${controllerName}"><nav:renderSubItems group="main"/></g:if>
-				</div>
+		<div id="header">
+			<a href="http://grails.org" class="logo"><img src="${resource(dir: 'images', file: 'logo.png')}" alt=""/></a>
+			<div class="nav">
+				<nav:render group="main"/>
+				<g:if test="${controllerName}"><nav:renderSubItems group="main"/></g:if>
 			</div>
-			<div id="main">
-				<g:layoutBody/>
-			</div>
-			<div class="footer">
-			</div>
+		</div>
+		<div id="main">
+			<g:layoutBody/>
+		</div>
+		<div id="footer">
 		</div>
 	</body>
 </html>
