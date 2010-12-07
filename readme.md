@@ -4,6 +4,7 @@ This is an attempt to reskin the standard Grails scaffolding and index pages usi
 
 ## Features
 
+* Basic and enhanced experiences using [EnhanceJS][2]
 * Layouts and scaffolding use HTML5 markup
 * Some elements of [HTML5 Boilerplate][3] integrated into markup and CSS
 * Integrates jQuery, jQuery-UI and [Modernizr][1] Javascript libraries
@@ -14,7 +15,6 @@ This is an attempt to reskin the standard Grails scaffolding and index pages usi
 
 ## To-do
 
-* Integrate EnhanceJS
 * Add WAI-ARIA roles to appropriate elements
 * Ensure everything works in IE
 * 404 page
@@ -25,6 +25,7 @@ This is an attempt to reskin the standard Grails scaffolding and index pages usi
 * Hi-res Apple touch icon (114x114)
 
 [1]:http://www.modernizr.com/
+[2]:http://www.filamentgroup.com/lab/introducing_enhancejs_smarter_safer_apply_progressive_enhancement/
 [3]:http://html5boilerplate.com/
 [4]:http://www.456bereastreet.com/archive/201004/html5_input_types/
 [5]:http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/mobilehig/IconsImages/IconsImages.html

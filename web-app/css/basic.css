@@ -1,3 +1,13 @@
+/*
+ * This is the basic experience stylesheet. i.e. it's the foundation for the richer UI
+ * but is designed to work in old browsers, with js disabled, etc. Therefore there
+ * should be no use of CSS that may render in problematic ways. That means no position,
+ * floats, negative margins, display/visibility, CSS3, font-face, browser-specific hacks,
+ * etc.
+ *
+ * It's okay to use colours, background images, font size/weight/family, margins, padding, etc.
+ */
+
 /*fouc*/
 html.enhanced #container { opacity: 0; }
 html.enhanced-incomplete #container { opacity: 1; }
